@@ -21,9 +21,9 @@ function App() {
             <Route path="/user/bookings" element={<YourBookings />} />
             <Route path="/user/profile" element={<Profile />} />
             <Route path="/user/dashboard" element={<UserDashboard />} />
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            <Route path="/admin/now-showing" element={<AdminShowing />} />
-            <Route path="/admin/requests" element={<AdminRequests />} />
+            <Route path="/admin/:userID/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/:userID/now-showing" element={<AdminShowing />} />
+            <Route path="/admin/:userID/requests" element={<AdminRequests />} />
         </Routes>
       </ Router>
     </div>
