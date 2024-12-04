@@ -4,7 +4,7 @@ const CreateShowing = () => {
     return (
         <div class="carousel">
                 {data.movies.map((movie) => (
-                    <div class="carousel-item">
+                    <div class="movie">
                         <img src={movie.image} alt={movie.title}/>
                     </div>
                 ))}
