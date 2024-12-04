@@ -1,0 +1,11 @@
+{
+    "movies" : [
+        {"title": "Wicked", "image": "logo192.png"},
+        {"title": "Not Wicked", "image": "logo192.png"},
+        {"title": "Wicked", "image": "logo192.png"}
+    ],
+
+    "user" : [
+        {"id": "0", "username": "BREHHH", "password": "RAAGHHH", "email": "UGHHH"}
+    ]
+}
