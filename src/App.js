@@ -1,5 +1,5 @@
-import React, { useState, useEffect} from 'react';
-import { BrowserRouter as Router, Routes, Route, Outlet, } from 'react-router-dom'; // Import BrowserRouter
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Outlet, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import SignUp from './components/SignUp';
 import UserDashboard from './components/UserDashboard';
@@ -8,27 +8,42 @@ import NowShowing from './components/NowShowing';
 import Profile from './components/Profile';
 import Movie from './components/Movie';
 import Book from './components/Book';
-import './stylesheets/User.css';
 import Payment from './components/Payment';
 import Receipt from './components/Receipt';
+import YourBookings from "./components/YourBookings";
+import AdminShowing from "./components/AdminShowing";
+import AdminRequests from "./components/AdminRequests.js";
+import AdminEditForm from "./components/AdminEditForm.js";
+import AdminAddForm from "./components/AdminAddForm.js";
+import AdminSidebar from './components/AdminSidebar.js';
+import AdminMovies from './components/AdminMovies.js';
+import './stylesheets/User.css';
 
 const App = () => {
-  const [logStatus, changeLogStatus] = useState(false); // log state
-  
+  const [logStatus, changeLogStatus] = useState(false); // Log state
 
   return (
-    <Router> 
+    <Router>
       <Routes>
         {/* WITHOUT Navbar */}
         <Route path="/" element={<NoNavbarLayout />}>
           <Route index element={<SignUp changeLogStatus={changeLogStatus} />} />
+          <Route path="/signin" elements={<SignUp changeLogStatus={changeLogStatus} />}/>
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/showing" element={<AdminShowing />} />
+          <Route path="/admin/movies" element={<AdminMovies />} />
+          <Route path="/admin/requests" element={<AdminRequests />} />
+          <Route path="/admin/edit-form" element={<AdminEditForm />} />
+          <Route path="/admin/add-form" element={<AdminAddForm />} />
+          <Route path="/user/now-showing" element={<NowShowing />} />
+          <Route path="/user/bookings" element={<YourBookings />} />
+          <Route path="/user/profile" element={<Profile />} />
         </Route>
 
         {/* WITH Navbar */}
         <Route path="/" element={<NavbarLayout logStatus={logStatus} />}>
-          <Route path="/nowshowing" element={<NowShowing/>} />
-          <Route index path="/:user/dashboard" element={<UserDashboard />} />
+          <Route path="/nowshowing" element={<NowShowing />} />
+          <Route path="/:user/dashboard" element={<UserDashboard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/:movieID" element={<Movie />} />
           <Route path="/book/:movieID" element={<Book />} />
@@ -41,9 +56,31 @@ const App = () => {
 };
 
 const NoNavbarLayout = () => {
+  const location = useLocation(); // Detect current route
+
+  // Check if the route is an admin route
+  const isAdminRoute = location.pathname.includes('/admin');
+  let selectedSidebarOption = '';
+
+  // Highlight the appropriate sidebar option
+  if (location.pathname.includes('/admin/dashboard')) {
+    selectedSidebarOption = 'dashboard';
+  } else if (location.pathname.includes('/admin/showing')) {
+    selectedSidebarOption = 'showing';
+  } else if (location.pathname.includes('/admin/movies')) {
+    selectedSidebarOption = 'movies';
+  } else if (location.pathname.includes('/admin/requests')) {
+    selectedSidebarOption = 'requests';
+  }
+
   return (
     <>
-      <Outlet/>
+      {isAdminRoute && (
+        <div className="admin-div">
+          <AdminSidebar selected={selectedSidebarOption} />
+        </div>
+      )}
+      <Outlet />
     </>
   );
 };
@@ -51,8 +88,8 @@ const NoNavbarLayout = () => {
 const NavbarLayout = ({ logStatus }) => {
   return (
     <>
-      <Navbar logStatus={logStatus}/>
-      <Outlet/>
+      <Navbar logStatus={logStatus} />
+      <Outlet />
     </>
   );
 };

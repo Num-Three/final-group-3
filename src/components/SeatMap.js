@@ -1,8 +1,4 @@
-import React, { useState } from 'react';
 import Seats from './Seats';
-import data from '../db.json'
-import { Navigate } from 'react-router-dom';
-import { useParams } from 'react-router';
 
 function Seatmap({handleToggle, selectedSeats}){
 
