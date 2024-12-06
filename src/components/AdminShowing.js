@@ -1,6 +1,6 @@
-function AdminShowing() {
+const AdminShowing = () => {
     return (
-        <div className="AdminShowing">
+        <div>
         </div>
     );
 }

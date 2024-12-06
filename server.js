@@ -1,51 +1,114 @@
 const express = require('express');
 const fs = require('fs');
-const path = require('path');
-const cors = require('cors');
+const bodyParser = require('body-parser');
 const app = express();
+const PORT = 5000;
+const cors = require('cors');
 
-const DATA_FILE = path.join(__dirname, 'src', 'db.json'); // Path to db.json
-
+app.use(bodyParser.json());
 app.use(cors());
-app.use(express.json());
 
-// Update or delete the data
-app.post('/api/:category', (req, res) => {
-  const category = req.params.category;
-  const updatedData = req.body;
+// Helper function to load the db.json data
+const loadData = () => {
+  const data = fs.readFileSync('db.json');
+  return JSON.parse(data);
+};
 
-  console.log(`Received request to update category: ${category}`);
-  console.log('Updated Data:', updatedData);  // Log the data being sent to the server
+// Helper function to save data back to db.json
+const saveData = (data) => {
+  fs.writeFileSync('db.json', JSON.stringify(data, null, 2));
+};
 
-  fs.readFile(DATA_FILE, 'utf8', (err, data) => {
-    if (err) {
-      console.error('Error reading db.json:', err);
-      return res.status(500).send("Error reading data");
-    }
-    
-    const jsonData = JSON.parse(data);
-    console.log('Current DB:', jsonData);  // Log the current state of db.json
-
-    // Ensure the category exists in the JSON data
-    if (!jsonData[category]) {
-      return res.status(404).json({ error: `Category '${category}' not found` });
-    }
-
-    // Update the specific category in the JSON
-    jsonData[category] = updatedData;
-
-    // Write the updated data back to db.json
-    fs.writeFile(DATA_FILE, JSON.stringify(jsonData, null, 2), 'utf8', (err) => {
-      if (err) {
-        console.error('Error saving data:', err);
-        return res.status(500).send("Error saving data");
-      }
-      console.log('Data saved successfully!');
-      res.json({ message: `${category} updated successfully` });
-    });
-  });
+// Get table data (movies, showing, etc.)
+app.get('/:table', (req, res) => {
+  const { table } = req.params;
+  const data = loadData();
+  if (data[table]) {
+    res.json(data[table]);
+  } else {
+    res.status(404).json({ error: `Table ${table} not found` });
+  }
 });
 
-app.listen(5000, () => {
-  console.log("Server running on http://localhost:5000");
+// Get specific item by ID from a table
+app.get('/:table/:id', (req, res) => {
+  const { table, id } = req.params;
+  const data = loadData();
+  
+  if (!data[table]) {
+    return res.status(404).json({ error: `Table ${table} not found` });
+  }
+
+  const item = data[table].find(item => item.id.toString() === id);
+  if (item) {
+    res.json(item);
+  } else {
+    res.status(404).json({ error: `Item with ID ${id} not found in ${table}` });
+  }
+});
+
+// Add to table (movies, showing, etc.)
+app.post('/:table', (req, res) => {
+  const { table } = req.params;
+  const newItem = req.body;
+  const data = loadData();
+
+  if (!data[table]) {
+    return res.status(404).json({ error: `Table ${table} not found` });
+  }
+
+  newItem.id = Date.now(); // Assign a unique ID based on timestamp
+  data[table].push(newItem);
+  saveData(data);
+  res.status(201).json(newItem);
+});
+
+// Edit an item in the table
+app.put('/:table/:id', (req, res) => {
+  const { table, id } = req.params;
+  const updatedItem = req.body;
+  const data = loadData();
+
+  if (!data[table]) {
+    return res.status(404).json({ error: `Table ${table} not found` });
+  }
+
+  const index = data[table].findIndex((item) => item.id.toString() === id);
+  if (index === -1) {
+    return res.status(404).json({ error: `Item with ID ${id} not found in ${table}` });
+  }
+
+  data[table][index] = { ...data[table][index], ...updatedItem };
+  saveData(data);
+  res.json(data[table][index]);
+});
+
+// Delete an item in the table
+app.delete('/:table/:id', (req, res) => {
+  const { table, id } = req.params;
+  const data = loadData();
+
+  if (!data[table]) {
+    return res.status(404).json({ error: `Table ${table} not found` });
+  }
+
+  const index = data[table].findIndex((item) => item.id.toString() === id);
+  if (index === -1) {
+    return res.status(404).json({ error: `Item with ID ${id} not found in ${table}` });
+  }
+
+  const deletedItem = data[table].splice(index, 1)[0];
+  saveData(data);
+  res.json(deletedItem);
+});
+
+app.post('/update-db', (req, res) => {
+  const updatedData = req.body; // The new data you want to store in db.json
+  saveData(updatedData); // Save it to db.json
+  res.status(200).json({ message: 'Database updated successfully' });
+});
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });

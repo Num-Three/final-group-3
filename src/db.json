@@ -21,6 +21,28 @@
         "Drama",
         "Romance"
       ]
+    },
+    {
+      "id": 2,
+      "title": "Wicked",
+      "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg",
+      "desc": "Is your pussy crazy?",
+      "rating": 2,
+      "cast": [
+        "cynthia",
+        "ari"
+      ],
+      "director": [
+        "Glinda the Good",
+        "b"
+      ],
+      "trailer": "https://youtu.be/6COmYeLsz4c?si=Bb9I3bk2aXhIvbms",
+      "runtime": 180,
+      "genres": [
+        "Fantasy",
+        "Drama",
+        "Romance"
+      ]
     }
   ],
 
@@ -36,23 +58,23 @@
 
   "rating": [
     {
-      "id:": 1,
+      "id:": "1",
       "rating": "G"
     },
     {
-      "id:": 2,
+      "id:": "2",
       "rating": "PG"
     },
     {
-      "id:": 3,
+      "id:": "3",
       "rating": "R13"
     },
     {
-      "id:": 4,
+      "id:": "4",
       "rating": "R16"
     },
     {
-      "id:": 5,
+      "id:": "5",
       "rating": "R18"
     }
   ],
@@ -63,6 +85,15 @@
       "username": "User",
       "password": "user123",
       "email": "user@gmail.com"
+    }
+  ],
+
+  "booking" : [
+    {
+      "id": "0",
+      "showingid": "1",
+      "seats": [
+      ]
     }
   ],
 

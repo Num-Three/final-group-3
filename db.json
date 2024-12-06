@@ -1,16 +1,81 @@
 {
-    "movies" : [
-        {"id": "0", "title": "Wicked", "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg"},
-        {"id": "1", "title": "Not Wicked", "image": "logo192.png"},
-        {"id": "2", "title": "Wicked", "image": "logo192.png"}
-    ],
+  "movies": [
+    {
+      "id": "0",
+      "title": "RaaaAGAGasdasdasd",
+      "image": "rwarrw",
+      "desc": "sadasdasd",
+      "rating": "",
+      "cast": [
+        "Cynthia",
+        "Ariana"
+      ],
+      "director": [
+        "Yes",
+        "Me"
+      ],
+      "trailer": "https://youtube.com",
+      "runtime": 865
+    }
+  ],
 
-    "user" : [
-        {"id": "0", "username": "BREHHH", "password": "RAAGHHH", "email": "UGHHH"}
-    ],
+  "showing": [
+    {
+      "id": 1,
+      "movieid": 0,
+      "date": "December 6",
+      "start": "8:00",
+      "end": "9:30"
+    }
+  ],
 
-    "requests" : [
-        {"id": "0", "header": "Request Type", "details": "yes, this is ahjgh wghwig ahigawhg iwahgawi hgwauigh awug hawugh awugwahg uiawh guiwahgawuhgawuhg.", "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg", "summary": "ok"},
-        {"id": "2", "header": "Request Type", "details": "no this hwghwighwgahgsjahngnaignwig 1941j4i214u1ij nwfw.", "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg", "summary": "whateever"}
-    ]
+  "rating": [
+    {
+      "id:": "1",
+      "rating": "G"
+    },
+    {
+      "id:": "2",
+      "rating": "PG"
+    },
+    {
+      "id:": "3",
+      "rating": "R13"
+    },
+    {
+      "id:": "4",
+      "rating": "R16"
+    },
+    {
+      "id:": "5",
+      "rating": "R18"
+    }
+  ],
+
+  "user": [
+    {
+      "id": "0",
+      "username": "User",
+      "password": "user123",
+      "email": "user@gmail.com"
+    }
+  ],
+
+ "booking" : [
+    {
+      "id": "0",
+      "showingid": "1",
+      "seats": [
+      ]
+    }
+  ], 
+
+  "requests": [
+    {
+      "id": "1",
+      "request_type": "Cancel Booking",
+      "userid": "0",
+      "bookingid": "0" 
+    }
+  ]
 }

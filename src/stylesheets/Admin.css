@@ -1,5 +1,12 @@
 body {
     background-color: rgb(245, 245, 245);
+    font-family: 'Jost', 'sans-serif';
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 
 .admin-table {
@@ -9,29 +16,56 @@ body {
     border-radius: 10px;
 }
 
-.admin-table table {
+table {
     width: 100%;
     border-spacing: 0 8px;
     border-collapse: separate;
 }
 
-.admin-table table th, td {
+table tr {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+input,select {
+    padding: 10px 0px 10px 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid;
+}
+
+h1,h2,h3 {
+    color: var(--red);
+}
+
+th,td {
     padding: 10px;
     border: 1px solid #ccc;
-    background-color: rgb(255, 255, 255);
     text-align: left;
     word-wrap: break-word;
     white-space: normal;
-    max-width: 150px;
+    max-width: 150px;   
 }
 
-.admin-table table th {
+th {
+    color: var(--light-gray);
     background-color: var(--red);
 }
 
-.admin-table table tr {
-    background-color: rgb(255, 255, 255); 
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+button {
+    padding: 6px 15px 6px 15px;
+    min-width: 80px;
+    max-width: 200px;
+    color: var(--light-gray);
+    background-color: var(--red);
+    border-radius: 8px;
+    border: none;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    scale: 1.02;
 }
 
 .table.actions {
@@ -40,12 +74,12 @@ body {
     width: 170px;
 }
 
-.table.actions button {
-    margin: 0 7px; /* Adds spacing between action buttons */
+button {
+    margin: 0 7px;
 }
 
 .edit-form {
-    background-color: rgb(255,255,255);
+    background-color: rgb(255, 255, 255);
     width: 670px;
     height: 900px;
     display: flex;
@@ -56,10 +90,41 @@ body {
     padding: 0px 50px 15px 50px;
 }
 
-.edit-form input, select {
-    padding: 10px 0px 10px 10px;
-    margin-bottom: 15px;
-    width: 100%;
+.card {
     border-radius: 8px;
-    border: 1px solid;
-}  
+    border: 2px solid #ccc;
+    background-color: var(--white);
+    width: 400px;
+    height: 220px;
+    padding: 15px 30px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card h1 {
+    color: var(--red);
+    font-size: 22px;
+}
+
+.card h2 {
+    margin-top: 24px;
+    font-size: 18px;
+}
+
+.card h1, h2, h3, p {
+    margin: 4px;
+}
+
+.card .container {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.admin-table.navbar button {
+    min-width: 0;
+    max-width: none;
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    margin: 0px 12px 0px 0px;
+    padding: 0px;
+}

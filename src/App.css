@@ -1,10 +1,10 @@
 :root {
   --red: #C32828;
-  --yellow: #C3AB28;
   --black: #161616;
   --gray: rgb(50,50,50);
   --light-gray: rgb(235,235,235);
   --lighter-gray: rgb(245,245,245);
+  --white: rgb(255,255,255);
 }
 
 .sidebar {
@@ -25,22 +25,28 @@
   padding: 6px 8px 6px 16px;
   text-decoration: none !important;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: normal;
   color: var(--light-gray);
   border: 2px solid;
   border-color: var(--red);
   border-radius: 8px;
   margin: 24px;
   display: block;
+  transition: 0.2s ease;
 }
 
 .sidebar a.selected {
-  font-weight: 700;
+  font-weight: bold;
   background-color: var(--red);
   color: var(--light-gray);
 }
 
+.sidebar a:hover {
+  scale: 1.02;
+}
+
 .div-body {
   margin-left: 260px;
-  padding: 0px 10px;
+  padding: 25px;
 }
+
