@@ -46,12 +46,12 @@ const AdminDashboard = () => {
       <div className="div-body">
         <div className="admin-table">
           <h3>Movies</h3>
-          <DynamicTable json_data={moviesData} tableName="movies" handleDelete={handleDelete} canEdit={true} />
+          <DynamicTable json_data={moviesData} tableName="movies" handleDelete={handleDelete} canEdit={true} toEdit={"movie"} />
         </div>
 
         <div className="admin-table">
           <h3>Showings</h3>
-          <DynamicTable json_data={showingData} tableName="showing" handleDelete={handleDelete} canEdit={true}  />
+          <DynamicTable json_data={showingData} tableName="showing" handleDelete={handleDelete} canEdit={true} toEdit={"showing"}  />
         </div>
 
         <div className="admin-table">

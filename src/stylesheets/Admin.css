@@ -27,7 +27,8 @@ table tr {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
 }
 
-input,select {
+input,
+select {
     padding: 10px 0px 10px 10px;
     margin-bottom: 15px;
     width: 100%;
@@ -35,17 +36,20 @@ input,select {
     border: 1px solid;
 }
 
-h1,h2,h3 {
+h1,
+h2,
+h3 {
     color: var(--red);
 }
 
-th,td {
+th,
+td {
     padding: 10px;
     border: 1px solid #ccc;
     text-align: left;
     word-wrap: break-word;
     white-space: normal;
-    max-width: 150px;   
+    max-width: 150px;
 }
 
 th {
@@ -62,16 +66,16 @@ button {
     border-radius: 8px;
     border: none;
     transition: 0.2s ease;
+    cursor: pointer;
 }
 
 button:hover {
     scale: 1.02;
+    background-color: var(--black);
 }
 
 .table.actions {
-    text-align: center;
-    vertical-align: middle;
-    width: 170px;
+    text-align: right;
 }
 
 button {
@@ -81,13 +85,10 @@ button {
 .edit-form {
     background-color: rgb(255, 255, 255);
     width: 670px;
-    height: 900px;
+    height: auto;
+    padding: 30px 45px 30px 30px;
     display: flex;
     flex-direction: column;
-}
-
-.edit-form .container {
-    padding: 0px 50px 15px 50px;
 }
 
 .card {
@@ -110,7 +111,10 @@ button {
     font-size: 18px;
 }
 
-.card h1, h2, h3, p {
+.card h1,
+h2,
+h3,
+p {
     margin: 4px;
 }
 
@@ -127,4 +131,53 @@ button {
     height: 35px;
     margin: 0px 12px 0px 0px;
     padding: 0px;
+}
+
+.admin-table.navbar label {
+    font-size: 23px;
+    color: var(--red);
+}
+
+.movie-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    width: 400px;
+}
+
+.movie-info {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.movie-info h3 {
+    font-size: 1.5rem;
+}
+
+.movie-info p {
+    font-size: 1rem;
+}
+
+.movie-card button {
+    margin: 5px;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.movie-poster img {
+    width: 150px;
+    /* Poster width */
+    aspect-ratio: 2/3;
+    /* Enforces poster aspect ratio */
+    object-fit: cover;
+    /* Ensures the image fits within its container */
+    border-radius: 4px;
+    border: 1px solid #ddd;
 }

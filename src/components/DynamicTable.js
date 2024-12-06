@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-const DynamicTable = ({ json_data, tableName, handleDelete, canEdit }) => {
+const DynamicTable = ({ json_data, tableName, handleDelete, canEdit, toEdit }) => {
   const navigate = useNavigate();
 
   // Check if json_data is an array
@@ -9,7 +9,7 @@ const DynamicTable = ({ json_data, tableName, handleDelete, canEdit }) => {
 
   // Handle edit (can be implemented further if needed)
   const handleEdit = (id) => {
-    navigate("/admin/edit-form", { state: { id: id } });
+    navigate("/admin/edit-form", { state: { id: id, editing: toEdit } });
   };
 
   if (json_data.length === 0) {
@@ -36,7 +36,7 @@ const DynamicTable = ({ json_data, tableName, handleDelete, canEdit }) => {
               <td key={index}>{row[col]}</td>
             ))}
             {canEdit && (
-              <td>
+              <td className="table actions">
                 <button onClick={() => handleEdit(row.id)}>Edit</button>
                 <button onClick={() => handleDelete(row.id, tableName)}>Delete</button>
               </td>

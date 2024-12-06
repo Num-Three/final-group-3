@@ -1,70 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
-const CreateCard = ({ request, handleApprove, handleDeny }) => {
-    const { id, bookingid, userid } = request;
-    const [user, setUser] = useState({});
-    const [booking, setBooking] = useState({});
-    const [showing, setShowing] = useState({});
-    const [movie, setMovie] = useState({});
-
-    // Fetch user, booking, showing, and movie details
-    useEffect(() => {
-        const fetchUser = async () => {
-            const response = await fetch(`http://localhost:5000/user/${userid}`);
-            const data = await response.json();
-            setUser(data);
-        };
-
-        const fetchBooking = async () => {
-            const response = await fetch(`http://localhost:5000/booking/${bookingid}`);
-            const data = await response.json();
-            setBooking(data);
-            if (data.showingid) {
-                fetchShowing(data.showingid); // Fetch showing details when booking is available
-            }
-        };
-
-        const fetchShowing = async (showingid) => {
-            const response = await fetch(`http://localhost:5000/showing/${showingid}`);
-            const data = await response.json();
-            setShowing(data);
-            if (data.movieid) {
-                fetchMovie(data.movieid); // Fetch movie details when showing is available
-            }
-        };
-
-        const fetchMovie = async (movieid) => {
-            const response = await fetch(`http://localhost:5000/movies/${movieid}`);
-            const data = await response.json();
-            setMovie(data);
-        };
-
-        fetchUser();
-        fetchBooking();
-        fetchShowing(booking.showingid);
-        fetchMovie(showing.movieid)
-    }, [userid, bookingid]);
-
-    if (!user || !booking || !showing || !movie) {
-        return <div>Loading...</div>; // Display loading while data is fetching
-    }
-
-    return (
-        <div className="card">
-            <h1>Booking Cancellation Request</h1>
-            <p>{user.username} wants to cancel their booking.</p>
-            <h2>Details:</h2>
-            <div>
-                <p>Movie: {movie.title}</p> {/* Display movie title */}
-                <p>Showtime: {showing.start} to {showing.end}</p> {/* Display showtime */}
-            </div>
-            <div className="container">
-                <button onClick={() => handleApprove(id)}>Approve Request</button>
-                <button onClick={() => handleDeny(id)}>Deny Request</button>
-            </div>
-        </div>
-    );
-};
+import CreateCard from "./CreateCard.js";
 
 function AdminRequests() {
     const [requests, setRequests] = useState([]);
@@ -89,7 +24,9 @@ function AdminRequests() {
             body: JSON.stringify({ status: 'approved' }),
         });
 
-        setRequests(requests.filter(request => request.id !== id)); // Remove approved request
+        setRequests(requests.map(request => 
+            request.id === id ? { ...request, status: 'approved' } : request
+        ));
     };
 
     // Deny request
@@ -102,7 +39,9 @@ function AdminRequests() {
             body: JSON.stringify({ status: 'denied' }),
         });
 
-        setRequests(requests.filter(request => request.id !== id)); // Remove denied request
+        setRequests(requests.map(request => 
+            request.id === id ? { ...request, status: 'denied' } : request
+        ));
     };
 
     return (
@@ -120,6 +59,7 @@ function AdminRequests() {
                     ))}
                 </div>
             </div>
+
         </div>
     );
 }

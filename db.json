@@ -2,9 +2,9 @@
   "movies": [
     {
       "id": "0",
-      "title": "RaaaAGAGasdasdasd",
-      "image": "rwarrw",
-      "desc": "sadasdasd",
+      "title": "Wicked",
+      "image": "https://imgix.bustle.com/uploads/image/2024/11/14/e0280bfd/wicked-mc-241009-cd1c50.webp?w=374&h=468&fit=crop&crop=faces&dpr=2",
+      "desc": "my thing is green",
       "rating": "",
       "cast": [
         "Cynthia",
@@ -18,17 +18,15 @@
       "runtime": 865
     }
   ],
-
   "showing": [
     {
-      "id": 1,
-      "movieid": 0,
+      "id": "1",
+      "movieid": "0",
       "date": "December 6",
-      "start": "8:00",
-      "end": "9:30"
+      "start": "10:00",
+      "end": "12:30"
     }
   ],
-
   "rating": [
     {
       "id:": "1",
@@ -51,7 +49,6 @@
       "rating": "R18"
     }
   ],
-
   "user": [
     {
       "id": "0",
@@ -60,22 +57,27 @@
       "email": "user@gmail.com"
     }
   ],
-
- "booking" : [
+  "booking": [
     {
       "id": "0",
       "showingid": "1",
-      "seats": [
-      ]
+      "seats": []
     }
-  ], 
-
+  ],
   "requests": [
     {
       "id": "1",
       "request_type": "Cancel Booking",
       "userid": "0",
-      "bookingid": "0" 
+      "bookingid": "0",
+      "status": "approved"
+    },
+    {
+      "id": "2",
+      "request_type": "Cancel Booking",
+      "userid": "0",
+      "bookingid": "0",
+      "status": "denied"
     }
   ]
 }
