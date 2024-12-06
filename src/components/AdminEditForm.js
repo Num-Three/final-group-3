@@ -1,9 +1,11 @@
 import { useNavigate, useLocation } from 'react-router';
-import data from "../db.json";
+import { useState, useEffect } from 'react';
 
 const AdminEditForm = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const [ratings, setRatings] = useState([]);
+
     const returnNavigate = (e) => {
         e.preventDefault();
         navigate(-1);
@@ -55,7 +57,26 @@ const AdminEditForm = () => {
         navigate(-1);
     };
 
-    const ratingOptions = data.rating;
+    useEffect(() => {
+        const loadRatings = async () => {
+            const fetchedRatings = await fetchRatings();
+            setRatings(fetchedRatings);
+        };
+        loadRatings();
+    }, []);
+
+    const fetchRatings = async () => {
+        try {
+            const response = await fetch('http://localhost:5000/rating');
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error fetching ratings:', error);
+            return [];
+        }
+    };
+
+    const ratingOptions = ratings.option;
     const sent_id = location.state.id;
     const editing = location.state.editing;
 
