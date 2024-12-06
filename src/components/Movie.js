@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 
 function Movie() {
     const { movieID } = useParams();
@@ -28,7 +28,6 @@ function Movie() {
     }, [movieID]);
 
     if (redirect) {
-        // Redirect to booking page using movieID
         return <Navigate to={`/book/${movieID}`} />;
     }
 
@@ -37,8 +36,10 @@ function Movie() {
     }
 
     return (
-        <div className="user-body">
-            <h1>{movie.title}</h1>
+        <div className="Movie">
+            <div>
+                <p>{movie.title}</p>
+            </div>
             <div className="movie">
                 <img src={movie.image} alt={movie.title} />
             </div>
@@ -46,14 +47,14 @@ function Movie() {
                 <p>{movie.desc}</p>
             </div>
             <div>
-                <p>Actors: {movie.cast.join(", ")}</p>
-                <p>Director: {movie.director.join(", ")}</p>
+                <p>Actors: {movie.cast ? movie.cast.join(", ") : 'N/A'}</p>
+                <p>Director: {movie.director ? movie.director.join(", ") : 'N/A'}</p>
             </div>
             <div>
                 <p><strong>Showtimes:</strong></p>
                 {showtimes.length > 0 ? (
-                    showtimes.map((a) => (
-                        <p key={a.showingid}>{a.start} - {a.end}</p>
+                    showtimes.map((showing) => (
+                        <p key={showing.showingid}>{showing.start} - {showing.end}</p>
                     ))
                 ) : (
                     <p>No showtimes available.</p>

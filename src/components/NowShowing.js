@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 
-function Showing() {
+function NowShowing() {
     const newDate = new Date();
 
     const today = {
@@ -11,7 +11,7 @@ function Showing() {
         dayofweek: newDate.getDay(),
     };
 
-    const [selectedDate, setSelectedDate] = useState([String(today.month), String(today.day)]);
+    const [selectedDate, setSelectedDate] = useState([today.month, today.day]);
     const [redirect, setRedirect] = useState(false);
     const [moviesData, setMoviesData] = useState([]);
     const [showingsData, setShowingsData] = useState([]);
@@ -41,17 +41,17 @@ function Showing() {
             return showing.date[0] === date[0] && showing.date[1] === date[1];
         });
     };
+
     // Get today's showings initially
     const todayShowings = getShowingsForDate(selectedDate);
 
     // We want to keep a list of unique movies, so we map over today's showings and gather the unique movie IDs
     const movieIdsForToday = todayShowings.map(showing => showing.movieid);
-
+    
     // Filter the movies from the 'moviesData' array to include only those that have showings today
     const uniqueMovies = moviesData.filter(movie => movieIdsForToday.includes(movie.movieid));
 
     if (redirect) {
-        // Redirect to booking page using the selected movieID
         return <Navigate to="/booking" />;
     }
 
@@ -96,27 +96,25 @@ function Showing() {
     };
 
     return (
-        <div className="user-body">
-            <div className="showing-container">
-                <div className="movies-container">
-                    {uniqueMovies.length > 0 ? uniqueMovies.map(renderMovie) : <p>No showings for this date.</p>}
-                </div>
+        <div className="showing-container">
+            <div className="movies-container">
+                {uniqueMovies.length > 0 ? uniqueMovies.map(renderMovie) : <p>No showings for this date.</p>}
+            </div>
 
-                {/* Buttons for selecting different days */}
-                <div className="date-buttons">
-                    {generateNextDays().map((date, index) => (
-                        <button
-                            key={index}
-                            onClick={() => setSelectedDate(date)}
-                            className={date[0] === selectedDate[0] && date[1] === selectedDate[1] ? 'selected' : ''}
-                        >
-                            {`Day ${index + 1}: ${date[0]}/${date[1]}`}
-                        </button>
-                    ))}
-                </div>
+            {/* Buttons for selecting different days */}
+            <div className="date-buttons">
+                {generateNextDays().map((date, index) => (
+                    <button
+                        key={index}
+                        onClick={() => setSelectedDate(date)}
+                        className={date[0] === selectedDate[0] && date[1] === selectedDate[1] ? 'selected' : ''}
+                    >
+                        {`Day ${index + 1}: ${date[0]}/${date[1]}`}
+                    </button>
+                ))}
             </div>
         </div>
     );
 }
 
-export default Showing;
+export default NowShowing;

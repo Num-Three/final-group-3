@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Seats from './Seats';
 import Payment from './Payment';
 import { Navigate } from 'react-router-dom';
 import { useParams } from 'react-router';
@@ -10,23 +9,27 @@ const SeatSelection = () => {
     const [price, setPrice] = useState(0);
     const [movie, setMovie] = useState(null); // State to store movie details
     const [redirect, setRedirect] = useState(false);
+    const [loading, setLoading] = useState(true); // State to track loading status
 
     const { movieID } = useParams(); // Extract movie ID from the URL
 
     // Fetch data from the server
-    useEffect(() => {   
+    useEffect(() => {
         const fetchMovie = async () => {
             try {
                 const response = await fetch(`http://localhost:5000/movies/${movieID}`);
                 if (response.ok) {
                     const data = await response.json();
                     setMovie(data); // Set movie details in state
+                    setLoading(false); // Set loading to false after data is fetched
                 } else {
                     console.error("Failed to fetch movie:", response.statusText);
                     setMovie(null); // Set null if the movie is not found
+                    setLoading(false); // Set loading to false even if the movie is not found
                 }
             } catch (error) {
                 console.error("Error fetching movie data:", error);
+                setLoading(false); // Set loading to false if there's an error
             }
         };
 
@@ -47,10 +50,16 @@ const SeatSelection = () => {
         return <Navigate to="/payment" state={{ price }} />;
     }
 
+    // Only show loading message or redirect if the movie is still loading or there's an error
+    if (loading) {
+        return <p>Loading movie details...</p>;
+    }
+
+    // If no movie data, show an error or redirect to a different page (e.g., home page)
     if (!movie) {
         return (
             <div>
-                <p>Loading movie details...</p>
+                <p>Movie not found.</p>
                 <Navigate to="/" />
             </div>
         );

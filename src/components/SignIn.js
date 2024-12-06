@@ -15,7 +15,7 @@ const Login = ({ changeLogStatus }) => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch("http://localhost:5000/users");
+                const response = await fetch("http://localhost:5000/user");
                 if (response.ok) {
                     const data = await response.json();
                     setUsers(data);
@@ -60,7 +60,7 @@ const Login = ({ changeLogStatus }) => {
 
             if (matchedUser) {
                 setErrors({});
-                setUser(matchedUser.userid);
+                setUser(matchedUser.id);
                 setRedirect(true);
             } else {
                 setErrors({ general: 'Invalid username or password.' });

@@ -5,29 +5,32 @@ const CreateShowing = ({ movielist }) => {
     const [redirect, setRedirect] = useState(false);
     const [movieID, setMovieID] = useState(0);
 
+    // Check if movielist is an array before trying to map
+    if (!Array.isArray(movielist)) {
+        return <p>Error: movielist is not a valid array</p>;
+    }
+
     if (redirect) {
-        // Use Navigate to redirect to the movie's page using movieID
-        return <Navigate to={`/${movieID}`} />;
+        return <Navigate to={`/${movieID}`} />
     }
 
     return (
         <div className="carousel">
             {movielist.length > 0 ? (
                 movielist.map((movie) => (
-                    <div className="movie" key={movie.id}>  {/* Use movie.id as the key */}
+                    <div className="movie" key={movie.id}>
                         <img
                             src={movie.image}
                             alt={movie.title}
                             onClick={() => {
-                                setMovieID(movie.id);
                                 setRedirect(true);
+                                setMovieID(movie.id);
                             }}
-                            style={{ cursor: 'pointer' }} // Add a cursor pointer for user interaction
                         />
                     </div>
                 ))
             ) : (
-                <p>No movies available</p> // Show a fallback message if no movies are passed
+                <p>No movies available.</p>
             )}
         </div>
     );
