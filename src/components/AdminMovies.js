@@ -37,7 +37,7 @@ const AdminMovies = () => {
     return (
         <div className="div-body">
             <div className="admin-table navbar">
-                <button onClick={() => navigate("/admin/add-form", {state: {adding: "movie"}})}>
+                <button onClick={() => navigate("/admin/add-form", { state: { adding: "movie" } })}>
                     +
                 </button>
                 <label>Add Movie</label>
@@ -46,14 +46,14 @@ const AdminMovies = () => {
             <div className="admin-table">
                 <h3>Manage Movies</h3>
 
-                <div>
+                <div className="admin-grid">
                     {moviesData.map((movie) => (
                         <div key={movie.id} className="movie-card">
                             <div className="movie-info">
                                 <h3>{movie.title}</h3>
                                 <p>{movie.desc}</p>
-                                <p><strong>Cast:</strong> {movie.cast.join(', ')}</p>
-                                <p><strong>Director:</strong> {movie.director.join(', ')}</p>
+                                <p><strong>Cast:</strong> {movie.cast ? movie.cast.join(', ') : 'N/A'}</p>
+                                <p><strong>Director:</strong> {movie.director ? movie.director.join(', ') : 'N/A'}</p>
                                 <p><strong>Rating:</strong> {movie.rating}</p>
                                 <p><strong>ID:</strong> {movie.id}</p>
                                 <div className="movie-actions">
