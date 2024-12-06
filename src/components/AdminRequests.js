@@ -1,3 +1,11 @@
+function AdminRequests() {
+    return (
+        <div className="AdminRequests">
+        </div>
+    );
+}
+
+export default AdminRequests;
 import React, { useEffect, useState } from 'react';
 import CreateCard from "./CreateCard.js";
 

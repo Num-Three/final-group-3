@@ -1,0 +1,20 @@
+{
+    "movies" : [
+        {"title": "Wicked", "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg"},
+        {"title": "Not Wicked", "image": "logo192.png"},
+        {"title": "Wicked", "image": "logo192.png"}
+    ],
+
+    "user" : [
+        {"id": "0", "username": "BREHHH", "password": "RAAGHHH", "email": "UGHHH"}
+    ],
+
+    "requests" : [
+        {"id": "0", "header": "Request Type", "details": "yes, this is ahjgh wghwig ahigawhg iwahgawi hgwauigh awug hawugh awugwahg uiawh guiwahgawuhgawuhg.", "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg", "summary": "ok"},
+        {"id": "2", "header": "Request Type", "details": "no this hwghwighwgahgsjahngnaignwig 1941j4i214u1ij nwfw.", "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg", "summary": "whateever"}
+    ],
+
+    "accounts" : [
+        {"userID": "0"}
+    ]
+}
