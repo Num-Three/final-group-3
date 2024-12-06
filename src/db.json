@@ -1,20 +1,109 @@
 {
-    "movies" : [
-        {"title": "Wicked", "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg"},
-        {"title": "Not Wicked", "image": "logo192.png"},
-        {"title": "Wicked", "image": "logo192.png"}
+    "movies": [
+      {
+        "id": "0",
+        "title": "Wicked",
+        "image": "https://imgix.bustle.com/uploads/image/2024/11/14/e0280bfd/wicked-mc-241009-cd1c50.webp?w=374&h=468&fit=crop&crop=faces&dpr=2",
+        "desc": "my thing is green",
+        "rating": "",
+        "cast": [
+          "Cynthia",
+          "Ariana"
+        ],
+        "director": [
+          "Yes",
+          "Me"
+        ],
+        "trailer": "https://youtube.com",
+        "runtime": 865
+      }
+    ],
+    "showing": [
+      {
+        "id": "1",
+        "movieid": "0",
+        "date": "December 6",
+        "start": "10:00",
+        "end": "12:30"
+      }
+    ],
+    "rating": [
+      {
+        "id:": "1",
+        "rating": "G"
+      },
+      {
+        "id:": "2",
+        "rating": "PG"
+      },
+      {
+        "id:": "3",
+        "rating": "R13"
+      },
+      {
+        "id:": "4",
+        "rating": "R16"
+      },
+      {
+        "id:": "5",
+        "rating": "R18"
+      }
+    ],
+    "user": [
+      {
+        "id": "0",
+        "username": "User",
+        "password": "user123",
+        "email": "user@gmail.com"
+      }
+    ],
+    "booking": [
+      {
+        "id": "0",
+        "showingid": "1",
+        "seats": []
+      }
+    ],
+    "requests": [
+      {
+        "id": "1",
+        "request_type": "Cancel Booking",
+        "userid": "0",
+        "bookingid": "0",
+        "status": "approved"
+      },
+      {
+        "id": "2",
+        "request_type": "Cancel Booking",
+        "userid": "0",
+        "bookingid": "0",
+        "status": "denied"
+      }
     ],
 
-    "user" : [
-        {"id": "0", "username": "BREHHH", "password": "RAAGHHH", "email": "UGHHH"}
+    "bookings": [
+        {
+            "id": 1,
+            "date": "Dec 6",
+            "seats": ["A1", "A6"],
+            "movieid": 1
+        }
     ],
 
-    "requests" : [
-        {"id": "0", "header": "Request Type", "details": "yes, this is ahjgh wghwig ahigawhg iwahgawi hgwauigh awug hawugh awugwahg uiawh guiwahgawuhgawuhg.", "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg", "summary": "ok"},
-        {"id": "2", "header": "Request Type", "details": "no this hwghwighwgahgsjahngnaignwig 1941j4i214u1ij nwfw.", "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg", "summary": "whateever"}
-    ],
-
-    "accounts" : [
-        {"userID": "0"}
+    "receipt": [
+        {
+            "receiptid": "1",
+            "firstname": "user",
+            "lastname": "userson",
+            "cardnumber:": "1111 1111 1111 1111",
+            "cvv": "1234"
+        },
+        {
+            "receiptid": "2",
+            "firstname": "user",
+            "lastname": "userson",
+            "cardnumber:": "1111 1111 1111 1111",
+            "cvv": "1234"
+        }
     ]
-}
+  }

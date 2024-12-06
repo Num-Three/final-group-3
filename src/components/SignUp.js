@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import data from '../db.json';
 
 const SignUp = ({ changeLogStatus }) => {  // Receives changeLogStatus as a prop
   const [formData, setFormData] = useState({
@@ -13,7 +12,7 @@ const SignUp = ({ changeLogStatus }) => {  // Receives changeLogStatus as a prop
   const [redirect, setRedirect] = useState(false); // To control redirection after successful sign-up
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {}; // Error list
 
@@ -38,18 +37,33 @@ const SignUp = ({ changeLogStatus }) => {  // Receives changeLogStatus as a prop
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors); // Set errors if any
     } else {
-      // Simulate adding user to the database
+      // Send new user data to backend (assumed to be at localhost:5000/users)
       const newUser = {
-        userid: Date.now().toString(), // Generate a unique ID
         username: formData.username,
         email: formData.email,
         password: formData.password,
         role: 'user', // Default role
       };
-      data.user.push(newUser); // Simulate adding to `db.json`
 
-      alert('Account created successfully!');
-      setRedirect(true); // Trigger redirect after successful sign-up
+      try {
+        const response = await fetch('http://localhost:5000/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newUser),
+        });
+
+        if (response.ok) {
+          alert('Account created successfully!');
+          setRedirect(true); // Trigger redirect after successful sign-up
+        } else {
+          alert('Failed to create account. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error signing up:', error);
+        alert('An error occurred. Please try again later.');
+      }
     }
   };
 

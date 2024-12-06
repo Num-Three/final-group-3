@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import SignUp from './components/SignUp';
+import SignIn from './components/SignIn';
 import UserDashboard from './components/UserDashboard';
 import AdminDashboard from './components/AdminDashboard';
 import NowShowing from './components/NowShowing';
@@ -17,6 +18,7 @@ import AdminEditForm from "./components/AdminEditForm.js";
 import AdminAddForm from "./components/AdminAddForm.js";
 import AdminSidebar from './components/AdminSidebar.js';
 import AdminMovies from './components/AdminMovies.js';
+
 import './stylesheets/User.css';
 
 const App = () => {
@@ -28,7 +30,7 @@ const App = () => {
         {/* WITHOUT Navbar */}
         <Route path="/" element={<NoNavbarLayout />}>
           <Route index element={<SignUp changeLogStatus={changeLogStatus} />} />
-          <Route path="/signin" elements={<SignUp changeLogStatus={changeLogStatus} />}/>
+          <Route path="/signin" element={<SignIn changeLogStatus={changeLogStatus} />}/>
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/showing" element={<AdminShowing />} />
           <Route path="/admin/movies" element={<AdminMovies />} />
@@ -49,6 +51,7 @@ const App = () => {
           <Route path="/book/:movieID" element={<Book />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/receipt" element={<Receipt />} />
+          
         </Route>
       </Routes>
     </Router>

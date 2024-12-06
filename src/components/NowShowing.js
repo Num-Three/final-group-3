@@ -1,9 +1,7 @@
-import data from '../db.json';
 import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router';
 
-
-function Showing() {
+function NowShowing() {
     const newDate = new Date();
 
     const today = {
@@ -13,13 +11,34 @@ function Showing() {
         dayofweek: newDate.getDay(),
     };
 
-    const [selectedDate, setSelectedDate] = useState([today.month, today.day]); // Keep track of the selected date
+    const [selectedDate, setSelectedDate] = useState([today.month, today.day]);
     const [redirect, setRedirect] = useState(false);
+    const [moviesData, setMoviesData] = useState([]);
+    const [showingsData, setShowingsData] = useState([]);
 
-    // Function to get showings based on selected date
+    // Fetch movie and showings data from the backend
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const moviesResponse = await fetch('http://localhost:5000/movies');
+                const movies = await moviesResponse.json();
+                setMoviesData(movies);
+
+                const showingsResponse = await fetch('http://localhost:5000/showing');
+                const showings = await showingsResponse.json();
+                setShowingsData(showings);
+            } catch (error) {
+                console.error('Error fetching movie or showing data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    // Function to get showings based on the selected date
     const getShowingsForDate = (date) => {
-        return data.showing.filter((showing) => {
-            return String(showing.date[0]) === String(date[0]) && String(showing.date[1]) === String(date[1]);
+        return showingsData.filter((showing) => {
+            return showing.date[0] === date[0] && showing.date[1] === date[1];
         });
     };
 
@@ -29,8 +48,8 @@ function Showing() {
     // We want to keep a list of unique movies, so we map over today's showings and gather the unique movie IDs
     const movieIdsForToday = todayShowings.map(showing => showing.movieid);
     
-    // Filter the movies from the 'data.movies' array to include only those that have showings today
-    const uniqueMovies = data.movies.filter(movie => movieIdsForToday.includes(movie.movieid));
+    // Filter the movies from the 'moviesData' array to include only those that have showings today
+    const uniqueMovies = moviesData.filter(movie => movieIdsForToday.includes(movie.movieid));
 
     if (redirect) {
         return <Navigate to="/booking" />;
@@ -98,4 +117,4 @@ function Showing() {
     );
 }
 
-export default Showing;
+export default NowShowing;

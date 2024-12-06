@@ -1,51 +1,187 @@
 {
   "movies": [
     {
-      "id": "0",
+      "id": "1",
       "title": "Wicked",
-      "image": "https://imgix.bustle.com/uploads/image/2024/11/14/e0280bfd/wicked-mc-241009-cd1c50.webp?w=374&h=468&fit=crop&crop=faces&dpr=2",
-      "desc": "my thing is green",
-      "rating": "",
+      "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg",
+      "desc": "Misunderstood because of her green skin, a young woman named Elphaba forges an unlikely but profound friendship with Glinda, a student with an unflinching desire for popularity. Following an encounter with the Wizard of Oz, their relationship soon reaches a crossroad as their lives begin to take very different paths.",
+      "rating": 2,
       "cast": [
-        "Cynthia",
-        "Ariana"
+        "Cynthia Erivo",
+        "Arianna Grande"
       ],
       "director": [
-        "Yes",
-        "Me"
+        "Glinda the Good"
       ],
-      "trailer": "https://youtube.com",
-      "runtime": 865
+      "trailer": "https://youtu.be/6COmYeLsz4c?si=Bb9I3bk2aXhIvbms",
+      "runtime": 180,
+      "genres": [
+        "Fantasy",
+        "Drama",
+        "Romance"
+      ],
+      "price": 300
+    },
+    {
+      "id": "2",
+      "title": "Anatomy of a Fall",
+      "image": "https://m.media-amazon.com/images/M/MV5BYTk3MjFkZmQtMThiYi00N2JhLTk2YzItZTE5ZGUxZTIyZDVkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+      "desc": "A woman is suspected of murder after her husband's death; their half-blind son faces a moral dilemma as the main witness.",
+      "rating": 3,
+      "cast": [
+        "Sandra Hüller",
+        "Swann Arlaud",
+        "Milo Machado-Graner"
+      ],
+      "director": [
+        "Justine Triet"
+      ],
+      "trailer": "https://youtu.be/FUXawkH-ONM?si=uerEbKfzO7BVLXFz",
+      "runtime": 181,
+      "genres": [
+        "Drama",
+        "Psychological"
+      ],
+      "price": 200
+    },
+    {
+      "id": "3",
+      "title": "Look Back",
+      "image": "",
+      "desc": "A woman is suspected of murder after her husband's death; their half-blind son faces a moral dilemma as the main witness.",
+      "rating": 2,
+      "cast": [],
+      "trailer": "",
+      "runtime": 57,
+      "genres": [
+        "Drama",
+        "Coming-of-Age"
+      ],
+      "price": 230
+    },
+    {
+      "id": "4",
+      "title": "Diary ng Panget: The Movie",
+      "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQR27r1wWGVul1GHlKnvhtF6p9OpVjJt6Z2NyU3O9VZMUJj6-1jDbnRqxrpGDyNKJj5HjWv",
+      "desc": "A poor, self-described ugly girl takes a job as a personal maid for a rich, handsome young man. The two don't get along, but as they get tangled in their classmates' games of affection, their relationship becomes more complicated.",
+      "rating": 2,
+      "cast": [
+        "Nadine Lustre",
+        "James Reid",
+        "Yassi Pressman",
+        "Andre Paras"
+      ],
+      "director": [
+        "Andoy Ranay"
+      ],
+      "trailer": "https://youtu.be/4LhL73HI7Co?si=uczGHN8celJdwlGz",
+      "runtime": 170,
+      "genres": [
+        "Romance",
+        "Comedy"
+      ],
+      "price": 150
+    },
+    {
+      "id": "5",
+      "title": "La La Land",
+      "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ1nBwwilF14fViDx_wF7ZlkZkyafDVkc16_CERN3ACxWFH_fHI",
+      "desc": "When Sebastian, a pianist, and Mia, an actress, follow their passion and achieve success in their respective fields, they find themselves torn between their love for each other and their careers",
+      "rating": 3,
+      "cast": [
+        "Ryan Gosling",
+        "Emma Stone",
+        "Rosemarie DeWitt"
+      ],
+      "director": [
+        "Damien Chazelle"
+      ],
+      "trailer": "https://youtu.be/lu4RHvouJH8?si=17fOl5NQIB1ahusJ",
+      "runtime": 128,
+      "genres": [
+        "Musical",
+        "Romance"
+      ],
+      "price": 263
+    },
+    {
+      "id": "6",
+      "title": "Insiang",
+      "image": "https://m.media-amazon.com/images/M/MV5BM2NlOTFiMDUtNjYyYS00YTI1LTgzZTUtNDAxN2YwNmUyZWU4XkEyXkFqcGc@._V1_.jpg",
+      "desc": "The life of a young girl living with her mother in the slums of Manila becomes unbearable when her mother's young boyfriend moves in with them.",
+      "rating": 6,
+      "cast": [
+        "Hilda Koronel",
+        "Mona Lisa",
+        "Rez Cortez"
+      ],
+      "director": [
+        "Lino Brocka"
+      ],
+      "trailer": "https://www.youtube.com/watch?v=oyqnHhn1QhU",
+      "runtime": 155,
+      "genres": [
+        "Drama"
+      ],
+      "price": 230
     }
   ],
   "showing": [
     {
       "id": "1",
-      "movieid": "0",
-      "date": "December 6",
+      "movieid": "1",
+      "date": ["12", "06"],
       "start": "10:00",
       "end": "12:30"
+    },
+    {
+      "id": "2",
+      "movieid": "2",
+      "date": ["12", "06"],
+      "start": "1:00",
+      "end": "3:30"
+    },
+    {
+      "id": "3",
+      "movieid": "3",
+      "date": ["12", "06"],
+      "start": "1:00",
+      "end": "3:30"
+    },
+    {
+      "id": "4",
+      "movieid": "4",
+      "date": ["12", "06"],
+      "start": "1:00",
+      "end": "3:30"
+    },
+    {
+      "id": "5",
+      "movieid": "1",
+      "date": ["12", "06"],
+      "start": "3:30",
+      "end": "5:30"
     }
   ],
   "rating": [
     {
-      "id:": "1",
+      "id": "1",
       "rating": "G"
     },
     {
-      "id:": "2",
+      "id": "2",
       "rating": "PG"
     },
     {
-      "id:": "3",
+      "id": "3",
       "rating": "R13"
     },
     {
-      "id:": "4",
+      "id": "4",
       "rating": "R16"
     },
     {
-      "id:": "5",
+      "id": "5",
       "rating": "R18"
     }
   ],
@@ -79,5 +215,40 @@
       "bookingid": "0",
       "status": "denied"
     }
-  ]
+  ],
+  "nowshowing": [
+    "1",
+    "2",
+    "3",
+    "4"
+  ],
+  "comingsoon": [
+    "5",
+    "6"
+  ],
+  "bookings": [
+    {
+        "id": 1,
+        "date": "Dec 6",
+        "seats": ["A1", "A6"],
+        "movieid": 1
+    }
+],
+
+"receipt": [
+    {
+        "receiptid": "1",
+        "firstname": "user",
+        "lastname": "userson",
+        "cardnumber:": "1111 1111 1111 1111",
+        "cvv": "1234"
+    },
+    {
+        "receiptid": "2",
+        "firstname": "user",
+        "lastname": "userson",
+        "cardnumber:": "1111 1111 1111 1111",
+        "cvv": "1234"
+    }
+]
 }

@@ -1,12 +1,36 @@
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import data from '../db.json'
 import { useParams } from 'react-router';
 
 const Navbar = ({ logStatus }) => {
-    const {userid} = useParams();
+    const { userid } = useParams(); // Extract userid from the route
+    const [user, setUser] = useState(null); // State to store user data
+
+    // Fetch user data based on userid
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await fetch(`http://localhost:5000/users/${userid}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    setUser(data); // Store user data in state
+                } else {
+                    console.error("Failed to fetch user data:", response.statusText);
+                    setUser(null); // Handle case where user data isn't available
+                }
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        };
+
+        if (userid) {
+            fetchUser();
+        }
+    }, [userid]);
+
     return (
         <div>
-            <nav className="">
+            <nav>
                 <div className="container">
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav topnav">
@@ -18,7 +42,7 @@ const Navbar = ({ logStatus }) => {
                                 <Link to="/nowshowing" className="nav-link">NOW SHOWING</Link>
                             </li>
 
-                            {logStatus === true ? (
+                            {logStatus ? (
                                 // If logStatus is true
                                 <>
                                     <li className="right">
@@ -35,9 +59,17 @@ const Navbar = ({ logStatus }) => {
                                 </li>
                             )}
                             <li className="right">
-                                <Link to="/profile" className="nav-link"><div className="profile_thumb"><img src={userid}></img></div></Link>
+                                <Link to="/profile" className="nav-link">
+                                    <div className="profile_thumb">
+                                        {/* Display user profile image if available */}
+                                        {user?.profilePicture ? (
+                                            <img src={user.profilePicture} alt="Profile" />
+                                        ) : (
+                                            <span>Loading...</span>
+                                        )}
+                                    </div>
+                                </Link>
                             </li>
-
                         </ul>
                     </div>
                 </div>
