@@ -120,28 +120,28 @@
         {
             "showingid": 1,
             "movieid": 1,
-            "date": "December 6",
+            "date": [12, 6],
             "start":"8:00",
             "end":"9:30"
         },
         {
             "showingid": 2,
-            "movieid": 1,
-            "date": "Dec 6",
+            "movieid": 4,
+            "date": [12, 6],
             "start":"10:00",
             "end":"10:30"
         },
         {
             "showingid": 3,
             "movieid": 1,
-            "date": "Dec 6",
+            "date": [12, 10],
             "start":"11:00",
             "end":"12:30"
         },
         {
             "showingid": 4,
             "movieid": 2,
-            "date": "Dec 6",
+            "date": [12, 6],
             "start":"10:00",
             "end":"11:30"
         }

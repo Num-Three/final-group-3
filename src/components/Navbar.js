@@ -2,12 +2,11 @@ import { Link } from 'react-router-dom';
 import data from '../db.json'
 import { useParams } from 'react-router';
 
-
 const Navbar = ({ logStatus }) => {
     const {userid} = useParams();
     return (
         <div>
-            <nav className="navbar navbar-expand-lg sticky-top">
+            <nav className="">
                 <div className="container">
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav topnav">
@@ -21,7 +20,6 @@ const Navbar = ({ logStatus }) => {
 
                             {logStatus === true ? (
                                 // If logStatus is true
-
                                 <>
                                     <li className="right">
                                         <Link to="/profile" className="nav-link">Profile</Link>
@@ -37,7 +35,7 @@ const Navbar = ({ logStatus }) => {
                                 </li>
                             )}
                             <li className="right">
-                                <Link to="/" className="nav-link"><div className="profile_thumb"><img src={userid}></img></div></Link>
+                                <Link to="/profile" className="nav-link"><div className="profile_thumb"><img src={userid}></img></div></Link>
                             </li>
 
                         </ul>

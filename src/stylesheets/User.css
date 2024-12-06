@@ -1,90 +1,163 @@
 .carousel {
-    display: flex;
-    gap: 20px; 
-    overflow-x: auto; 
-    padding: 8px;
-    scrollbar-width: none; 
-  }
-  .carousel::-webkit-scrollbar {
-    display: none;
-  }
-  .movie {
-    flex: 0 0 auto;
-    width: 200px;
-    aspect-ratio: 2 / 3;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  }
-  .movie img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    border-radius: inherit;
-  }
-  div.grid {
-    display: grid;
-    column-gap: 50px;
-    row-gap: 50px;
-  }
-  .grid.item {
-    width: 300px;
-    height: 100px;
-    border: 1px solid #ccc;
-    padding: 15px 5px 5px 15px;
-  }
+  display: flex;
+  gap: 20px; 
+  overflow-x: auto; 
+  padding: 8px;
+  scrollbar-width: none; 
+}
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+.movie {
+  flex: 0 0 auto;
+  width: 200px;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.movie img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  border-radius: inherit;
+}
+div.grid {
+  display: grid;
+  column-gap: 50px;
+  row-gap: 50px;
+}
+.grid.item {
+  width: 300px;
+  height: 100px;
+  border: 1px solid #ccc;
+  padding: 15px 5px 5px 15px;
+}
 
-  ul.topnav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    position:sticky;
-  }
-  
-  ul.topnav li {float: left;}
-  
-  ul.topnav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  ul.topnav li a:hover:not(.active) {background-color: #111;}
-  
-  ul.topnav li a.active {background-color: #04AA6D;}
-  
-  ul.topnav li.right {float: right;}
-  
-  @media screen and (max-width: 600px) {
-    ul.topnav li.right, 
-    ul.topnav li {float: none;}
-  }
 
-  .profile_thumb {
-    border-radius: 10px;
-    width: 30px;
-    height: 30px;
-  }
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  top:0;
+  width: 100%;
+  overflow: hidden;
+  background-color: #333;
+  position:fixed;
+ 
+}
 
-  .selected {
-    background-color: green;
-    
-  }
-  .unselected{
-    background-color: yellow;
-  }
+ul.topnav li {float: left;}
 
-  .grid-container {
-    display: grid;
-    width: 50%;
-    grid-template-columns: auto auto auto;
-  }
-  .grid-item {
-    margin: 0;
-    font-size: 30px;
-    text-align: center;
-  }
+ul.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+ul.topnav li a.active {background-color: #04AA6D;}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}
+
+.profile_thumb {
+  border-radius: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+.unselected {
+  background-color: green;
+
+  
+}
+.selected{
+  background-color: rgb(195, 31, 31);
+  
+}
+
+.grid-container {
+  display: grid;
+  width: 10%;
+
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+}
+.grid-item {
+color: white;
+width: 3em;
+height: 3em;
+border-radius: 20%;
+}
+.grid-text{ 
+color: white;
+}
+
+.navbar{
+  padding-bottom: 120px;
+}
+ul.topnav {
+list-style-type: none;
+margin: 0;
+padding-bottom: 0;
+top: 0;
+width: 100%;
+overflow: hidden;
+background-color: #333;
+position: fixed;
+z-index: 1000; /* Ensures the navbar is above other content */
+}
+
+.center-div {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+width: 100%;
+padding-top: 70px;  /* Adjust this value based on the height of your navbar */
+}
+
+.side-bar {
+width: 20%;
+padding: 10px;
+box-sizing: border-box;
+}
+
+.seatmap {
+width: 50%;
+padding: 10px;
+box-sizing: border-box;
+}
+
+/* Showing.css */
+
+/* Style for the buttons container */
+.date-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* General button style */
+.date-buttons button {
+  padding: 10px;
+  margin: 5px;
+  background-color: #ddd;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Style for the selected button */
+.date-buttons button.selected {
+  background-color: #888;
+  color: white;
+}
+

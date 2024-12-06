@@ -1,8 +1,8 @@
 function Seats ({seatnum, id, onClick, isSelected}){
 
     return(
-        <button className= {!isSelected ? ("selected"): ("unselected")} id={id} onClick={onClick}>
-            {seatnum}
+        <button className= {`grid-item ${!isSelected ?  ("selected"): ("unselected")} `} id={id} onClick={onClick}>
+           <p className="grid-text">{seatnum}</p> 
         </button>
     );
 }

@@ -9,19 +9,12 @@ import Profile from './components/Profile';
 import Movie from './components/Movie';
 import Book from './components/Book';
 import './stylesheets/User.css';
+import Payment from './components/Payment';
+import Receipt from './components/Receipt';
 
 const App = () => {
   const [logStatus, changeLogStatus] = useState(false); // log state
-  const newDate = new Date();
-
-  const [today, SetDate] = useState({
-    day: newDate.getDate(),
-    month: newDate.getMonth() + 1, // Months are 0-based
-    year: newDate.getFullYear(),
-    dayofweek: newDate.getDay(),
-  });
-
-  console.log(today);
+  
 
   return (
     <Router> 
@@ -34,11 +27,13 @@ const App = () => {
 
         {/* WITH Navbar */}
         <Route path="/" element={<NavbarLayout logStatus={logStatus} />}>
-          <Route path="/nowshowing" element={<NowShowing />} />
+          <Route path="/nowshowing" element={<NowShowing/>} />
           <Route index path="/:user/dashboard" element={<UserDashboard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/:movieID" element={<Movie />} />
           <Route path="/book/:movieID" element={<Book />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/receipt" element={<Receipt />} />
         </Route>
       </Routes>
     </Router>
