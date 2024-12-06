@@ -1,0 +1,252 @@
+{
+    "movies": [
+        {
+            "movieid": 1,
+            "title": "Wicked",
+            "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg",
+            "desc": "Is your pussy green?",
+            "rating": 2,
+            "cast": [
+                "Cynthia Erivo","Arianna Grande"
+            ],
+            "director": [
+                "Glinda the Good"
+            ],
+            "trailer": "https://youtu.be/6COmYeLsz4c?si=Bb9I3bk2aXhIvbms",
+            "runtime": 180,
+            "genres": [
+                "Fantasy","Drama","Romance"
+            ],
+            "price": 300
+        },
+
+        {
+            "movieid": 2,
+            "title": "Anatomy of a Fall",
+            "image": "https://m.media-amazon.com/images/M/MV5BYTk3MjFkZmQtMThiYi00N2JhLTk2YzItZTE5ZGUxZTIyZDVkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+            "desc": "A woman is suspected of murder after her husband's death; their half-blind son faces a moral dilemma as the main witness.",
+            "rating": 3,
+            "cast": [
+                "Sandra Hüller", "Swann ArlaudMilo", "Milo Machado-Graner"
+            ],
+            "director": [
+                "Justine Triet"
+            ],
+            "trailer": "https://youtu.be/FUXawkH-ONM?si=uerEbKfzO7BVLXFz",
+            "runtime": 181,
+            "genres": [
+                "Drama","Psychological"
+            ],
+            "price": 200
+        },
+        {
+            "movieid": 3,
+            "title": "Look Back",
+            "image": "https://m.media-amazon.com/images/M/MV5BMTc5YTBiYTctYzBjZi00ZGIwLWE4ZjgtNzlkNTRkNGRlZjIzXkEyXkFqcGc@._V1_.jpg",
+            "desc": "A woman is suspected of murder after her husband's death; their half-blind son faces a moral dilemma as the main witness.",
+            "rating": 2,
+            "cast": [
+                "Yumi Kawai", "Erin Yvette", "Suzie Yeung"
+            ],
+            "director": [
+                "Kiyotaka Oshiyama"
+            ],
+            "trailer": "https://youtu.be/Z9b4m-khnzM?si=0Wl0Eqs4pHjCOHYS",
+            "runtime": 57,
+            "genres": [
+                "Drama","Coming-of-Age"
+            ],
+            "price": 230
+        },
+        {
+            "movieid": 4,
+            "title": "Diary ng Panget: The Movie",
+            "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQR27r1wWGVul1GHlKnvhtF6p9OpVjJt6Z2NyU3O9VZMUJj6-1jDbnRqxrpGDyNKJj5HjWv",
+            "desc": "A poor, self-described ugly girl takes a job as a personal maid for a rich, handsome young man. The two don't get along, but as they get tangled in their classmates' games of affection, their relationship becomes more complicated.",
+            "rating": 2,
+            "cast": [
+                "Nadine Lustre", "James Reid", "Yassi Pressman", "Andre Paras"
+            ],
+            "director": [
+                "Andoy Ranay"
+            ],
+            "trailer": "https://youtu.be/4LhL73HI7Co?si=uczGHN8celJdwlGz",
+            "runtime": 170,
+            "genres": [
+                "Romance","Comedy"
+            ],
+            "price": 150
+        },
+        {
+            "movieid": 5,
+            "title": "La La Land",
+            "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ1nBwwilF14fViDx_wF7ZlkZkyafDVkc16_CERN3ACxWFH_fHI",
+            "desc": "When Sebastian, a pianist, and Mia, an actress, follow their passion and achieve success in their respective fields, they find themselves torn between their love for each other and their careers",
+            "rating": 3,
+            "cast": [
+                "Ryan Gosling", "Emma Stone", "Rosemarie DeWitt"
+            ],
+            "director": [
+                "Damien Chazelle"
+            ],
+            "trailer": "https://youtu.be/lu4RHvouJH8?si=17fOl5NQIB1ahusJ",
+            "runtime": 128,
+            "genres": [
+                "Musical","Romance"
+            ],
+            "price": 263
+        },
+        {
+            "movieid": 6,
+            "title": "Insiang",
+            "image": "https://m.media-amazon.com/images/M/MV5BM2NlOTFiMDUtNjYyYS00YTI1LTgzZTUtNDAxN2YwNmUyZWU4XkEyXkFqcGc@._V1_.jpg",
+            "desc": "The life of a young girl living with her mother in the slums of Manila becomes unbearable when her mother's young boyfriend moves in with them.",
+            "rating": 6,
+            "cast": [
+                "Hilda Koronel", "Mona Lisa", "Rez Cortez"
+            ],
+            "director": [
+                "Lino Brocka"
+            ],
+            "trailer": "https://www.youtube.com/watch?v=oyqnHhn1QhU",
+            "runtime": 155,
+            "genres": [
+                "Drama"
+            ],
+            "price": 230
+        }
+    ],
+    "showing": [
+        {
+            "showingid": 1,
+            "movieid": 1,
+            "date": "December 6",
+            "start":"8:00",
+            "end":"9:30"
+        },
+        {
+            "showingid": 2,
+            "movieid": 1,
+            "date": "Dec 6",
+            "start":"10:00",
+            "end":"10:30"
+        },
+        {
+            "showingid": 3,
+            "movieid": 1,
+            "date": "Dec 6",
+            "start":"11:00",
+            "end":"12:30"
+        },
+        {
+            "showingid": 4,
+            "movieid": 2,
+            "date": "Dec 6",
+            "start":"10:00",
+            "end":"11:30"
+        }
+    ],
+    "rating": [
+        {
+            "ratingid:": 1,
+            "rating": "G"
+        },
+        {
+            "ratingid:": 2,
+            "rating": "PG"
+        },
+        {
+            "ratingid:": 3,
+            "rating": "R13"
+        },
+        {
+            "ratingid:": 4,
+            "rating": "R16"
+        },
+        {
+            "ratingid:": 5,
+            "rating": "R18"
+        }
+    ],
+    "user": [
+        {
+            "userid": "1",
+            "username": "User",
+            "password": "user123",
+            "email": "user@gmail.com",
+            "img": "https://m.media-amazon.com/images/M/MV5BM2NlOTFiMDUtNjYyYS00YTI1LTgzZTUtNDAxN2YwNmUyZWU4XkEyXkFqcGc@._V1_.jpg",
+            "creationdate":"0601224"
+        },
+        {
+            "userid": "2",
+            "username": "Userrr",
+            "password": "user123",
+            "email": "user@gmail.com",
+            "img": "https://m.media-amazon.com/images/M/MV5BM2NlOTFiMDUtNjYyYS00YTI1LTgzZTUtNDAxN2YwNmUyZWU4XkEyXkFqcGc@._V1_.jpg",
+            "creationdate":"0601224"
+        }
+    ],
+    "requests": [
+        {
+            "requestsid": "0",
+            "header": "Request Type",
+            "details": "yes, this is ahjgh wghwig ahigawhg iwahgawi hgwauigh awug hawugh awugwahg uiawh guiwahgawuhgawuhg.",
+            "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg",
+            "summary": "ok"
+        },
+        {
+            "requestsid": "2",
+            "header": "Request Type",
+            "details": "no this hwghwighwgahgsjahngnaignwig 1941j4i214u1ij nwfw.",
+            "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg",
+            "summary": "whateever"
+        }
+    ],
+
+    "bookings": [
+        {
+            "id": 1,
+            "date": "Dec 6",
+            "seats": ["A1", "A6"],
+            "movieid": 1
+        }
+    ],
+
+    "receipt": [
+        {
+            "receiptid": "1",
+            "firstname": "user",
+            "lastname": "userson",
+            "cardnumber:": "1111 1111 1111 1111",
+            "cvv": "1234"
+        },
+        {
+            "receiptid": "2",
+            "firstname": "user",
+            "lastname": "userson",
+            "cardnumber:": "1111 1111 1111 1111",
+            "cvv": "1234"
+        }
+    ],
+    "booking": [
+        {
+            "id": "1",
+            "showingid": 1,
+            "seatid": "1"
+        },
+        {
+            "id": "2",
+            "showingid": 1,
+            "seatid": "2"
+        },
+        {
+            "id": "2",
+            "showingid": 1,
+            "seatid": "2"
+        }
+    ],
+
+
+    "nowshowing":[1, 2, 3, 4],
+    "comingsoon":[5, 6]
+}
