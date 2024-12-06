@@ -50,6 +50,9 @@ function Profile() {
         navigate(`/${userID}/yourbookings`); 
     };
 
+    const handleGoToReceipts = () => {
+        navigate(`${userID}/receipts`);  
+    };
 
     return (
         <div className="Profile">
@@ -71,8 +74,10 @@ function Profile() {
             <button onClick={handleDeleteProfile}>Delete Profile</button>
 
             {/* BOOKING*/}
-    
             <button onClick={handleGoToBookings}>Current Bookings</button>
+
+            {/* RECEIPTS*/}
+            <button onClick={handleGoToReceipts}>Receipts</button>
         </div>
     );
 }

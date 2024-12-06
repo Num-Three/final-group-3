@@ -39,9 +39,8 @@ const Login = ({ changeLogStatus }) => {
             if (matchedUser) {
                 setErrors({});
                 setUser(matchedUser.userid);
-                // Store userID in localStorage
                 localStorage.setItem('userID', matchedUser.userid);
-                setRedirect(true); // Redirect user
+                setRedirect(true);
             } else {
                 setErrors({ general: 'Invalid username or password.' });
             }
