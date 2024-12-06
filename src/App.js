@@ -1,8 +1,4 @@
 import './App.css';
-import NowShowing from "./components/NowShowing";
-import YourBookings from "./components/YourBookings";
-import Profile from "./components/Profile";
-import Login from "./components/Login";
 import UserDashboard from "./components/Dashboard"
 import AdminDashboard from "./components/AdminDashboard";
 import AdminShowing from "./components/AdminShowing";
@@ -41,10 +37,6 @@ const AppContent = () => {
       )}
 
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/user/now-showing" element={<NowShowing />} />
-        <Route path="/user/bookings" element={<YourBookings />} />
-        <Route path="/user/profile" element={<Profile />} />
         <Route path="/user/dashboard" element={<UserDashboard />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/showing" element={<AdminShowing />} />

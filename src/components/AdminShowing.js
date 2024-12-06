@@ -53,26 +53,27 @@ const AdminShowing = () => {
                     {showings.map((showing) => {
                         const movie = getMovieById(showing.movieid);
                         return (
-                            <div key={showing.id} className="admin-card">
-                                <div className="card-content">
-                                    {movie && (
-                                        <>
+                            <div key={showing.id} className="movie-card">
+                                {movie && (
+                                    <>
+                                        <div className="movie-info">
+                                            <h3>{movie.title}</h3>
+                                            <p><strong>Description:</strong> {movie.desc}</p>
+                                            <p><strong>Showtime:</strong> {showing.date}, {showing.start} - {showing.end}</p>
+                                            <div className="movie-actions">
+                                                <button onClick={() => handleEdit(showing.id)}>Edit</button>
+                                                <button onClick={() => handleDelete(showing.id)}>Delete</button>
+                                            </div>
+                                        </div>
+                                        <div className="movie-poster">
                                             <img
                                                 src={movie.image}
                                                 alt={movie.title}
-                                                className="movie-poster"
                                             />
-                                            <h4>{movie.title}</h4>
-                                            <p><strong>Description:</strong> {movie.desc}</p>
-                                            <p><strong>Showtime:</strong> {showing.date}, {showing.start} - {showing.end}</p>
-                                        </>
-                                    )}
-                                    {!movie && <p>Movie details not found</p>}
-                                </div>
-                                <div className="card-actions">
-                                    <button onClick={() => handleEdit(showing.id)}>Edit</button>
-                                    <button onClick={() => handleDelete(showing.id)}>Delete</button>
-                                </div>
+                                        </div>
+                                    </>
+                                )}
+                                {!movie && <p>Movie details not found</p>}
                             </div>
                         );
                     })}

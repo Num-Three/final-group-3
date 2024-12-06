@@ -85,7 +85,6 @@ const AdminEditForm = () => {
             <div className="edit-form">
                 {editing === "movie" && (
                     <form className="container" onSubmit={handleMovieSubmit}>
-
                         <h2>Edit Movie</h2>
                         <label>ID</label>
                         <input
