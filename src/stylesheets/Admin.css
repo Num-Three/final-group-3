@@ -1,0 +1,183 @@
+body {
+    background-color: rgb(245, 245, 245);
+    font-family: 'Jost', 'sans-serif';
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.admin-table {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0 8px;
+    border-collapse: separate;
+}
+
+table tr {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+input,
+select {
+    padding: 10px 0px 10px 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--red);
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+    word-wrap: break-word;
+    white-space: normal;
+    max-width: 150px;
+}
+
+th {
+    color: var(--light-gray);
+    background-color: var(--red);
+}
+
+button {
+    padding: 6px 15px 6px 15px;
+    min-width: 80px;
+    max-width: 200px;
+    color: var(--light-gray);
+    background-color: var(--red);
+    border-radius: 8px;
+    border: none;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+button:hover {
+    scale: 1.02;
+    background-color: var(--black);
+}
+
+.table.actions {
+    text-align: right;
+}
+
+button {
+    margin: 0 7px;
+}
+
+.edit-form {
+    background-color: rgb(255, 255, 255);
+    width: 670px;
+    height: auto;
+    padding: 30px 45px 30px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    background-color: var(--white);
+    width: 400px;
+    height: 220px;
+    padding: 15px 30px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card h1 {
+    color: var(--red);
+    font-size: 22px;
+}
+
+.card h2 {
+    margin-top: 24px;
+    font-size: 18px;
+}
+
+.card h1,
+h2,
+h3,
+p {
+    margin: 4px;
+}
+
+.card .container {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.admin-table.navbar button {
+    min-width: 0;
+    max-width: none;
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    margin: 0px 12px 0px 0px;
+    padding: 0px;
+}
+
+.admin-table.navbar label {
+    font-size: 23px;
+    color: var(--red);
+}
+
+.movie-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    width: 400px;
+}
+
+.movie-info {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.movie-info h3 {
+    font-size: 1.5rem;
+}
+
+.movie-info p {
+    font-size: 1rem;
+}
+
+.movie-card button {
+    margin: 5px;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.movie-poster img {
+    width: 150px;
+    /* Poster width */
+    aspect-ratio: 2/3;
+    /* Enforces poster aspect ratio */
+    object-fit: cover;
+    /* Ensures the image fits within its container */
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
