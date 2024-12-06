@@ -1,33 +1,37 @@
-const DynamicTable = ({ data }) => {
-    if (!data || data.length === 0) {
-      return <p>No data available.</p>;
-    }
-  
-    // Extract column names from the first object in the data
-    const columns = Object.keys(data[0]);
-  
-    return (
-      <table border="1" style={{ width: "100%", borderCollapse: "collapse" }}>
-        <thead>
-          <tr>
-            {/* Render <th> elements dynamically based on the keys */}
-            {columns.map((col, index) => (
-              <th key={index}>{col.charAt(0).toUpperCase() + col.slice(1)}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {/* Render rows dynamically */}
-          {data.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {columns.map((col, colIndex) => (
-                <td key={colIndex}>{row[col]}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    );
+const DynamicTable = ({ json_data }) => {
+  if (!json_data || json_data.length === 0) {
+    return <p>No data available.</p>;
+  }
+
+  const columns = Object.keys(json_data[0] || {});
+  const handleEdit = (id) => {
+    // will send a function thing here or redirect to a different page
   };
 
-  export default DynamicTable;
+  return (
+    <table>
+      <thead>
+        <tr>
+          {columns.map((col, index) => (
+            <th key={index}>{col.charAt(0).toUpperCase() + col.slice(1)}</th>
+          ))}
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {json_data.map((row) => (
+          <tr key={row.id}>
+            {columns.map((col, index) => (
+              <td key={index}>{row[col]}</td>
+            ))}
+            <td>
+              <button onClick={() => handleEdit(row.id)}>Edit</button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
+
+export default DynamicTable;

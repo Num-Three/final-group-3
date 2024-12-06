@@ -1,20 +1,77 @@
 {
-    "movies" : [
-        {"title": "Wicked", "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg"},
-        {"title": "Not Wicked", "image": "logo192.png"},
-        {"title": "Wicked", "image": "logo192.png"}
-    ],
+  "movies": [
+    {
+      "id": 1,
+      "title": "Wicked",
+      "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg",
+      "desc": "Is your pussy green?",
+      "rating": 2,
+      "cast": [
+        "cynthia",
+        "ari"
+      ],
+      "director": [
+        "Glinda the Good",
+        "b"
+      ],
+      "trailer": "https://youtu.be/6COmYeLsz4c?si=Bb9I3bk2aXhIvbms",
+      "runtime": 180,
+      "genres": [
+        "Fantasy",
+        "Drama",
+        "Romance"
+      ]
+    }
+  ],
 
-    "user" : [
-        {"id": "0", "username": "BREHHH", "password": "RAAGHHH", "email": "UGHHH"}
-    ],
+  "showing": [
+    {
+      "id": 1,
+      "movieid": 1,
+      "date": "December 6",
+      "start": "8:00",
+      "end": "9:30"
+    }
+  ],
 
-    "requests" : [
-        {"id": "0", "header": "Request Type", "details": "yes, this is ahjgh wghwig ahigawhg iwahgawi hgwauigh awug hawugh awugwahg uiawh guiwahgawuhgawuhg.", "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg", "summary": "ok"},
-        {"id": "2", "header": "Request Type", "details": "no this hwghwighwgahgsjahngnaignwig 1941j4i214u1ij nwfw.", "image": "https://cdn.kinocheck.com/i/8mxyyhborj.jpg", "summary": "whateever"}
-    ],
+  "rating": [
+    {
+      "id:": 1,
+      "rating": "G"
+    },
+    {
+      "id:": 2,
+      "rating": "PG"
+    },
+    {
+      "id:": 3,
+      "rating": "R13"
+    },
+    {
+      "id:": 4,
+      "rating": "R16"
+    },
+    {
+      "id:": 5,
+      "rating": "R18"
+    }
+  ],
 
-    "accounts" : [
-        {"userID": "0"}
-    ]
+  "user": [
+    {
+      "id": "0",
+      "username": "User",
+      "password": "user123",
+      "email": "user@gmail.com"
+    }
+  ],
+
+  "requests": [
+    {
+      "id": "1",
+      "request_type": "Cancel Booking",
+      "userid": "0",
+      "bookingid": "0" 
+    }
+  ]
 }

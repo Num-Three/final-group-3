@@ -7,6 +7,10 @@ import UserDashboard from "./components/Dashboard"
 import AdminDashboard from "./components/AdminDashboard";
 import AdminShowing from "./components/AdminShowing";
 import AdminRequests from "./components/AdminRequests.js";
+import AdminEditForm from "./components/AdminEditForm.js";
+import AdminSidebar from "./components/AdminSidebar.js";
+
+import 'boxicons';
 
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router';
@@ -14,6 +18,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router';
 function App() {
   return (
     <div>
+      <AdminSidebar selected={"dashboard"} />
       <Router>
         <Routes>
             <Route path="/" element={<Login />} />
@@ -21,9 +26,10 @@ function App() {
             <Route path="/user/bookings" element={<YourBookings />} />
             <Route path="/user/profile" element={<Profile />} />
             <Route path="/user/dashboard" element={<UserDashboard />} />
-            <Route path="/admin/:userID/dashboard" element={<AdminDashboard />} />
-            <Route path="/admin/:userID/now-showing" element={<AdminShowing />} />
-            <Route path="/admin/:userID/requests" element={<AdminRequests />} />
+            <Route path="/admin/:id/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/:id/now-showing" element={<AdminShowing />} />
+            <Route path="/admin/:id/requests" element={<AdminRequests />} />
+            <Route path="/admin/:id/edit-form" element={<AdminEditForm />} />
         </Routes>
       </ Router>
     </div>
