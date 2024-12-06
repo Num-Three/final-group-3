@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 const AdminEditForm = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const [ratings, setRatings] = useState([]);
+    const [rating, setRatings] = useState([]);
 
     const returnNavigate = (e) => {
         e.preventDefault();
@@ -76,7 +76,7 @@ const AdminEditForm = () => {
         }
     };
 
-    const ratingOptions = ratings.option;
+    const ratingOptions = rating;
     const sent_id = location.state.id;
     const editing = location.state.editing;
 

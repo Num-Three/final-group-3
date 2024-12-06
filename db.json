@@ -130,35 +130,50 @@
     {
       "id": "1",
       "movieid": "1",
-      "date": ["12", "06"],
+      "date": [
+        "12",
+        "06"
+      ],
       "start": "10:00",
       "end": "12:30"
     },
     {
       "id": "2",
       "movieid": "2",
-      "date": ["12", "06"],
+      "date": [
+        "12",
+        "06"
+      ],
       "start": "1:00",
       "end": "3:30"
     },
     {
       "id": "3",
       "movieid": "3",
-      "date": ["12", "06"],
+      "date": [
+        "12",
+        "06"
+      ],
       "start": "1:00",
       "end": "3:30"
     },
     {
       "id": "4",
       "movieid": "4",
-      "date": ["12", "06"],
+      "date": [
+        "12",
+        "06"
+      ],
       "start": "1:00",
       "end": "3:30"
     },
     {
       "id": "5",
       "movieid": "1",
-      "date": ["12", "06"],
+      "date": [
+        "12",
+        "06"
+      ],
       "start": "3:30",
       "end": "5:30"
     }
@@ -187,10 +202,28 @@
   ],
   "user": [
     {
-      "id": "0",
+      "id": 1733496594963,
       "username": "User",
       "password": "user123",
       "email": "user@gmail.com"
+    },
+    {
+      "username": "User",
+      "email": "akjfmakjfmafk@gmail.com",
+      "password": "abcdef",
+      "id": 1733496594973
+    },
+    {
+      "id": 1733496594963,
+      "username": "Admin",
+      "password": "user123",
+      "email": "user@gmail.com"
+    },
+    {
+      "username": "Admin",
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "id": 0
     }
   ],
   "booking": [
@@ -228,27 +261,29 @@
   ],
   "bookings": [
     {
-        "id": 1,
-        "date": "Dec 6",
-        "seats": ["A1", "A6"],
-        "movieid": 1
+      "id": 1,
+      "date": "Dec 6",
+      "seats": [
+        "A1",
+        "A6"
+      ],
+      "movieid": 1
     }
-],
-
-"receipt": [
+  ],
+  "receipt": [
     {
-        "receiptid": "1",
-        "firstname": "user",
-        "lastname": "userson",
-        "cardnumber:": "1111 1111 1111 1111",
-        "cvv": "1234"
+      "receiptid": "1",
+      "firstname": "user",
+      "lastname": "userson",
+      "cardnumber:": "1111 1111 1111 1111",
+      "cvv": "1234"
     },
     {
-        "receiptid": "2",
-        "firstname": "user",
-        "lastname": "userson",
-        "cardnumber:": "1111 1111 1111 1111",
-        "cvv": "1234"
+      "receiptid": "2",
+      "firstname": "user",
+      "lastname": "userson",
+      "cardnumber:": "1111 1111 1111 1111",
+      "cvv": "1234"
     }
-]
+  ]
 }

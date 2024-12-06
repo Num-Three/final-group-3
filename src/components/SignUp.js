@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
-const SignUp = ({ changeLogStatus }) => {  // Receives changeLogStatus as a prop
+const SignUp = ({ changeLogStatus }) => {  
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
     confirmPassword: '',
   });
-  const [errors, setErrors] = useState({}); // Array of error states
-  const [redirect, setRedirect] = useState(false); // To control redirection after successful sign-up
+  const [errors, setErrors] = useState({}); 
+  const [redirect, setRedirect] = useState(false); 
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newErrors = {}; // Error list
+    const newErrors = {};
 
     // VALIDATIONS
     if (!formData.username.trim()) {
@@ -35,18 +34,16 @@ const SignUp = ({ changeLogStatus }) => {  // Receives changeLogStatus as a prop
     }
 
     if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors); // Set errors if any
+      setErrors(newErrors);
     } else {
-      // Send new user data to backend (assumed to be at localhost:5000/users)
       const newUser = {
         username: formData.username,
         email: formData.email,
         password: formData.password,
-        role: 'user', // Default role
       };
 
       try {
-        const response = await fetch('http://localhost:5000/users', {
+        const response = await fetch('http://localhost:5000/user', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -56,7 +53,7 @@ const SignUp = ({ changeLogStatus }) => {  // Receives changeLogStatus as a prop
 
         if (response.ok) {
           alert('Account created successfully!');
-          setRedirect(true); // Trigger redirect after successful sign-up
+          setRedirect(true); 
         } else {
           alert('Failed to create account. Please try again.');
         }
@@ -67,13 +64,12 @@ const SignUp = ({ changeLogStatus }) => {  // Receives changeLogStatus as a prop
     }
   };
 
-  // Handle input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Redirect to sign-in page after successful sign-up
+  // Handle redirection after successful sign-up
   if (redirect) {
     changeLogStatus(false);  // Reset logStatus to false for login
     return <Navigate to={`/signin`} replace />;
@@ -149,7 +145,9 @@ const SignUp = ({ changeLogStatus }) => {  // Receives changeLogStatus as a prop
         <p style={{ marginTop: '10px' }}>
           Already have an account?{' '}
           <span
-            onClick={() => changeLogStatus(false)}  // Navigate to login page
+            onClick={() => {
+              changeLogStatus(true); setRedirect(true) // Correctly set status to show login
+            }}
             style={{ color: 'blue', cursor: 'pointer' }}
           >
             Log In

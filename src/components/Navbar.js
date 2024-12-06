@@ -55,17 +55,17 @@ const Navbar = ({ logStatus }) => {
                             ) : (
                                 // If logStatus is false
                                 <li className="right">
-                                    <Link to="/sign-up" className="nav-link">Sign In</Link>
+                                    <Link to="/" className="nav-link">Sign In</Link>
                                 </li>
                             )}
                             <li className="right">
-                                <Link to="/profile" className="nav-link">
+                                <Link to="/" className="nav-link">
                                     <div className="profile_thumb">
                                         {/* Display user profile image if available */}
                                         {user?.profilePicture ? (
                                             <img src={user.profilePicture} alt="Profile" />
                                         ) : (
-                                            <span>Loading...</span>
+                                            <span></span>
                                         )}
                                     </div>
                                 </Link>

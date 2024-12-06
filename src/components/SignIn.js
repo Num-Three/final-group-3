@@ -11,6 +11,13 @@ const Login = ({ changeLogStatus }) => {
     const [userid, setUser] = useState("");
     const [users, setUsers] = useState([]); // Store fetched users
 
+    // Admin credentials
+    const adminCredentials = {
+        username: "Admin",
+        password: "admin123",
+        id: 0,
+    };
+
     // Fetch users from the backend
     useEffect(() => {
         const fetchUsers = async () => {
@@ -51,19 +58,28 @@ const Login = ({ changeLogStatus }) => {
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
         } else {
-            // Find a matching user from fetched data
-            const matchedUser = users.find(
-                (user) =>
-                    user.username === formData.username.trim() &&
-                    user.password === formData.password.trim()
-            );
-
-            if (matchedUser) {
-                setErrors({});
-                setUser(matchedUser.id);
-                setRedirect(true);
+            // Check if the user is an admin
+            if (
+                formData.username.trim() === adminCredentials.username &&
+                formData.password.trim() === adminCredentials.password
+            ) {
+                setUser(adminCredentials.id);
+                setRedirect(true); // Redirect to admin dashboard
             } else {
-                setErrors({ general: 'Invalid username or password.' });
+                // Find a matching user from fetched data
+                const matchedUser = users.find(
+                    (user) =>
+                        user.username === formData.username.trim() &&
+                        user.password === formData.password.trim()
+                );
+
+                if (matchedUser) {
+                    setErrors({});
+                    setUser(matchedUser.id);
+                    setRedirect(true); // Redirect to user dashboard
+                } else {
+                    setErrors({ general: 'Invalid username or password.' });
+                }
             }
         }
 
@@ -73,6 +89,10 @@ const Login = ({ changeLogStatus }) => {
 
     if (redirect) {
         handleLogin();
+        // Redirect to the appropriate dashboard based on user role
+        if (userid === adminCredentials.id) {
+            return <Navigate to="/admin/dashboard" replace />;
+        }
         return <Navigate to={`/${userid}/dashboard`} replace />;
     }
 

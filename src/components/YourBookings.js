@@ -1,24 +1,56 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import data from '../db.json'; 
 
 function YourBookings() {
     const { userID } = useParams(); 
+    const [bookings, setBookings] = useState([]);
+    const [showings, setShowings] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    console.log('User ID from URL:', userID); 
+    useEffect(() => {
+        const fetchBookingData = async () => {
+            try {
+                // Fetch bookings and showings data from the backend
+                const response = await fetch('http://localhost:5000/db.json');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+                const data = await response.json();
+                
+                // Filter bookings for the current user based on userID
+                const userBookings = data.booking.filter((booking) => String(booking.seatid) === String(userID));
+                setBookings(userBookings);
 
-    const userBookings = data.booking.filter((booking) => {
-        console.log('Booking seatid:', booking.seatid); 
-        return String(booking.seatid) === String(userID); 
-    });
+                // Store the showings data
+                setShowings(data.showing);
 
+            } catch (err) {
+                setError('Error fetching bookings or showings data.');
+                console.error('Error fetching data:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchBookingData();
+    }, [userID]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>{error}</div>;
+    }
 
     return (
         <div>
             <h2>Your Bookings</h2>
-            {userBookings.length > 0 ? (
-                userBookings.map((booking) => {
-                    const showing = data.showing.find((show) => show.showingid === parseInt(booking.showingid)); // Use parseInt to compare numbers
+            {bookings.length > 0 ? (
+                bookings.map((booking) => {
+                    // Find the corresponding showing for this booking
+                    const showing = showings.find((show) => show.showingid === parseInt(booking.showingid));
 
                     return (
                         <div key={booking.id} className="booking">

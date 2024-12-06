@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import data from '../db.json';  
 
 function Profile() {
     const { userID } = useParams(); 
@@ -10,22 +9,32 @@ function Profile() {
     const navigate = useNavigate();  
 
     useEffect(() => {
-        console.log('userID from URL:', userID);
+        const fetchUserData = async () => {
+            try {
+                // Fetch user data from db.json on the server
+                const response = await fetch('http://localhost:5000/db.json');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+                const data = await response.json();
 
-        const foundUser = data.user.find((user) => {
-            console.log('Checking user with ID:', user.userid);  
-            return String(user.userid) === String(userID);  
-        });
+                // Find the user based on userID from URL params
+                const foundUser = data.users.find((user) => String(user.userid) === String(userID));
 
-        console.log('Found user:', foundUser);
+                if (!foundUser) {
+                    setError('User not found');
+                } else {
+                    setUser(foundUser);
+                }
+            } catch (err) {
+                setError('An error occurred while fetching user data.');
+                console.error('Error fetching user data:', err);
+            } finally {
+                setLoading(false); // Stop loading once the fetch is done
+            }
+        };
 
-        if (!foundUser) {
-            setError('User not found');
-        } else {
-            setUser(foundUser);
-        }
-
-        setLoading(false); 
+        fetchUserData();
     }, [userID]); 
 
     if (loading) {
@@ -41,9 +50,10 @@ function Profile() {
         navigate(`/edit-profile/${userID}`);  
     };
 
-
     const handleDeleteProfile = () => {
-        <p>bahhhhhhhhh</p>
+        // Implement deletion logic if needed
+        console.log("Profile deleted!");
+        setError('Profile deletion is not implemented.');
     };
 
     const handleGoToBookings = () => {
@@ -73,10 +83,10 @@ function Profile() {
             {/* Delete Profile Button */}
             <button onClick={handleDeleteProfile}>Delete Profile</button>
 
-            {/* BOOKING*/}
+            {/* Current Bookings Button */}
             <button onClick={handleGoToBookings}>Current Bookings</button>
 
-            {/* RECEIPTS*/}
+            {/* Receipts Button */}
             <button onClick={handleGoToReceipts}>Receipts</button>
         </div>
     );

@@ -62,7 +62,7 @@ function Dashboard() {
     }
 
     return (
-        <>
+        <div className="user-body">
             <h1>NOW SHOWING</h1>
             {filteredNowShowing.length > 0 ? (
                 <CreateMovieList movielist={filteredNowShowing} />
@@ -78,7 +78,7 @@ function Dashboard() {
             )}
 
             <div className="Dashboard"></div>
-        </>
+        </div>
     );
 }
 

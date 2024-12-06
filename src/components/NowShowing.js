@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Navigate } from 'react-router';
+import { Navigate } from 'react-router-dom';
 
 function NowShowing() {
     const newDate = new Date();
-
     const today = {
         day: newDate.getDate(),
         month: newDate.getMonth() + 1, // Months are 0-based
@@ -38,7 +37,11 @@ function NowShowing() {
     // Function to get showings based on the selected date
     const getShowingsForDate = (date) => {
         return showingsData.filter((showing) => {
-            return showing.date[0] === date[0] && showing.date[1] === date[1];
+            const showingDate = new Date(showing.date); // Ensure 'showing.date' is a valid Date object
+            const showingMonth = showingDate.getMonth() + 1; // Months are 0-based
+            const showingDay = showingDate.getDate();
+
+            return showingMonth === date[0] && showingDay === date[1]; // Compare month and day
         });
     };
 
@@ -46,10 +49,10 @@ function NowShowing() {
     const todayShowings = getShowingsForDate(selectedDate);
 
     // We want to keep a list of unique movies, so we map over today's showings and gather the unique movie IDs
-    const movieIdsForToday = todayShowings.map(showing => showing.movieid);
+    const movieIdsForToday = todayShowings.map(showing => showing.id);
     
     // Filter the movies from the 'moviesData' array to include only those that have showings today
-    const uniqueMovies = moviesData.filter(movie => movieIdsForToday.includes(movie.movieid));
+    const uniqueMovies = moviesData.filter(movie => movieIdsForToday.includes(movie.id));
 
     if (redirect) {
         return <Navigate to="/booking" />;
@@ -57,15 +60,15 @@ function NowShowing() {
 
     // Function to render movie details and its showtimes
     const renderMovie = (movie) => {
-        const showtimes = todayShowings.filter(showing => showing.movieid === movie.movieid);
+        const showtimes = todayShowings.filter(showing => showing.id === movie.id);
 
         return (
-            <div className="Movie" key={movie.movieid}>
+            <div className="Movie" key={movie.id}>
                 <div>
                     <p>{movie.title}</p>
                 </div>
                 <div className='movie'>
-                    <img src={movie.image} alt={movie.title}></img>
+                    <img src={movie.image} alt={movie.title} />
                 </div>
                 <div>
                     <p>{movie.desc}</p>
@@ -109,7 +112,7 @@ function NowShowing() {
                         onClick={() => setSelectedDate(date)}
                         className={date[0] === selectedDate[0] && date[1] === selectedDate[1] ? 'selected' : ''}
                     >
-                        {`Day ${index + 1}: ${date[0]}/${date[1]}`}
+                        {`${date[0]}/${date[1]}`}
                     </button>
                 ))}
             </div>

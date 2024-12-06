@@ -20,6 +20,7 @@ import AdminSidebar from './components/AdminSidebar.js';
 import AdminMovies from './components/AdminMovies.js';
 
 import './stylesheets/User.css';
+import './App.css';
 
 const App = () => {
   const [logStatus, changeLogStatus] = useState(false); // Log state
