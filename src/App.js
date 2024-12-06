@@ -24,14 +24,14 @@ import './App.css';
 
 const App = () => {
   const [logStatus, changeLogStatus] = useState(false); // Log state
-
+  const [ userid, setUserId ] = useState(); // Extract userid from the route
   return (
     <Router>
       <Routes>
         {/* WITHOUT Navbar */}
         <Route path="/" element={<NoNavbarLayout />}>
           <Route index element={<SignUp changeLogStatus={changeLogStatus} />} />
-          <Route path="/signin" element={<SignIn changeLogStatus={changeLogStatus} />}/>
+          <Route path="/signin" element={<SignIn changeLogStatus={changeLogStatus} setUserId={setUserId}/>}/>
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/showing" element={<AdminShowing />} />
           <Route path="/admin/movies" element={<AdminMovies />} />
@@ -44,10 +44,10 @@ const App = () => {
         </Route>
 
         {/* WITH Navbar */}
-        <Route path="/" element={<NavbarLayout logStatus={logStatus} />}>
+        <Route path="/" element={<NavbarLayout logStatus={logStatus} setUserId={setUserId} changeLogStatus={changeLogStatus}/>}>
           <Route path="/nowshowing" element={<NowShowing />} />
           <Route path="/:user/dashboard" element={<UserDashboard />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/:user/profile" element={<Profile />} />
           <Route path="/:movieID" element={<Movie />} />
           <Route path="/book/:movieID" element={<Book />} />
           <Route path="/payment" element={<Payment />} />
@@ -89,10 +89,10 @@ const NoNavbarLayout = () => {
   );
 };
 
-const NavbarLayout = ({ logStatus }) => {
+const NavbarLayout = ({ logStatus, setUserId}) => {
   return (
     <>
-      <Navbar logStatus={logStatus} />
+      <Navbar logStatus={logStatus} setUserId={setUserId}/>
       <Outlet />
     </>
   );

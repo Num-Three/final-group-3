@@ -19,7 +19,7 @@ function Profile() {
                 const data = await response.json();
 
                 // Find the user based on userID from URL params
-                const foundUser = data.users.find((user) => String(user.userid) === String(userID));
+                const foundUser = data.user.find((user) => String(user.id) === String(userID));
 
                 if (!foundUser) {
                     setError('User not found');

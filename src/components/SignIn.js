@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 
-const Login = ({ changeLogStatus }) => {
+const Login = ({ changeLogStatus, setUserId }) => {
     const [formData, setFormData] = useState({
         username: '',
         password: '',
     });
-    const [redirect, setRedirect] = useState(false);
+    const [redirect, setRedirect] = useState(null); // null means no redirection
     const [errors, setErrors] = useState({});
-    const [userid, setUser] = useState("");
     const [users, setUsers] = useState([]); // Store fetched users
 
     // Admin credentials
@@ -37,11 +36,6 @@ const Login = ({ changeLogStatus }) => {
         fetchUsers();
     }, []);
 
-    const handleLogin = () => {
-        // Simulate login and update logStatus to true
-        changeLogStatus(true);
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const newErrors = {};
@@ -63,8 +57,8 @@ const Login = ({ changeLogStatus }) => {
                 formData.username.trim() === adminCredentials.username &&
                 formData.password.trim() === adminCredentials.password
             ) {
-                setUser(adminCredentials.id);
-                setRedirect(true); // Redirect to admin dashboard
+                setUserId(adminCredentials.id);
+                setRedirect("/admin/dashboard"); // Redirect to admin dashboard
             } else {
                 // Find a matching user from fetched data
                 const matchedUser = users.find(
@@ -75,8 +69,8 @@ const Login = ({ changeLogStatus }) => {
 
                 if (matchedUser) {
                     setErrors({});
-                    setUser(matchedUser.id);
-                    setRedirect(true); // Redirect to user dashboard
+                    setUserId(matchedUser.id);
+                    setRedirect(`/${matchedUser.id}/dashboard`); // Redirect to user dashboard
                 } else {
                     setErrors({ general: 'Invalid username or password.' });
                 }
@@ -88,12 +82,8 @@ const Login = ({ changeLogStatus }) => {
     };
 
     if (redirect) {
-        handleLogin();
-        // Redirect to the appropriate dashboard based on user role
-        if (userid === adminCredentials.id) {
-            return <Navigate to="/admin/dashboard" replace />;
-        }
-        return <Navigate to={`/${userid}/dashboard`} replace />;
+        changeLogStatus(true)
+        return <Navigate to={redirect} replace />;
     }
 
     const handleInputChange = (e) => {

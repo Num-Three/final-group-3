@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useParams } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ logStatus }) => {
-    const { userid } = useParams(); // Extract userid from the route
+const Navbar = ({ logStatus, userid, changeLogStatus }) => {
+   
     const [user, setUser] = useState(null); // State to store user data
+    const navigate = useNavigate(); // For programmatic navigation
 
     // Fetch user data based on userid
     useEffect(() => {
@@ -28,6 +29,11 @@ const Navbar = ({ logStatus }) => {
         }
     }, [userid]);
 
+    const handleLogout = () => {
+        changeLogStatus(false); // Set logStatus to false to log out
+        navigate('/'); // Redirect to home page or login page
+    };
+
     return (
         <div>
             <nav>
@@ -46,11 +52,17 @@ const Navbar = ({ logStatus }) => {
                                 // If logStatus is true
                                 <>
                                     <li className="right">
-                                        <Link to="/profile" className="nav-link">Profile</Link>
+                                        <Link to={`/${userid}/profile`} className="nav-link">Profile</Link>
                                     </li>
-                                    <li className="right">
+                                  {/*  <li className="right">
                                         <Link to="/profile" className="nav-link">Notifications</Link>
                                     </li>
+                                     Logout Button 
+                                    <li className="right">
+                                        <button onClick={handleLogout} className="nav-link" style={{ border: 'none', background: 'transparent', cursor: 'pointer' }}>
+                                            Logout
+                                        </button>
+                                    </li>*/}
                                 </>
                             ) : (
                                 // If logStatus is false
@@ -61,12 +73,12 @@ const Navbar = ({ logStatus }) => {
                             <li className="right">
                                 <Link to="/" className="nav-link">
                                     <div className="profile_thumb">
-                                        {/* Display user profile image if available */}
+                                        {/* Display user profile image if available 
                                         {user?.profilePicture ? (
                                             <img src={user.profilePicture} alt="Profile" />
                                         ) : (
                                             <span></span>
-                                        )}
+                                        )}*/}
                                     </div>
                                 </Link>
                             </li>
