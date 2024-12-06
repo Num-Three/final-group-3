@@ -6,7 +6,7 @@ const Login = ({ changeLogStatus }) => {  //item parameterized from app.js
     const handleLogin = () => {
         // Simulate login and update logStatus to true
         changeLogStatus(true);
-    };
+    }; 
 
     //Form Data Array
     const [formData, setFormData] = useState({
@@ -16,7 +16,8 @@ const Login = ({ changeLogStatus }) => {  //item parameterized from app.js
     });
     const [redirect, setRedirect] = useState(false);
     const [errors, setErrors] = useState({}); //array error states
-
+    const [userid, setUser] = useState("");
+    
     // FORM SUBMISSION
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,10 +34,6 @@ const Login = ({ changeLogStatus }) => {  //item parameterized from app.js
             newErrors.password = 'Password is required';
         }
 
-        if (formData.password.trim() && formData.username.trim() &&
-            formData.password.trim() !== "user123" && !formData.username !== "User") {
-            newErrors.password = 'Username or password is incorrect.';
-        }
 
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors); // Pass the errors to state.
@@ -44,25 +41,29 @@ const Login = ({ changeLogStatus }) => {  //item parameterized from app.js
             // Find a matching user in the data array
             const matchedUser = data.user.find(
               (user) =>
-                user.username === formData.username.trim() &&
-                user.password === formData.password.trim()
+                user.username === formData.username.trim() && user.password === formData.password.trim()
             );
           
             if (matchedUser) {
               setErrors({}); // Reset errors if login is successful
+              setUser(matchedUser.userid);
               setRedirect(true); // Redirect user
             } else {
               setErrors({ general: 'Invalid username or password.' }); // Set a general error
             }
           }
-       
 
-setFormData({
-    username: '', password: ''
-});
+    setFormData({
+        username: '', password: ''
+    });
+            
+        };
         
-
-    };      
+//Navigation re-render
+if (redirect) {
+    handleLogin();
+    return <Navigate to={`/${userid}/dashboard`} replace />;
+}
 
 // INPUT CHANGE HANDLE-  takes event name that correspond to the formData object and sets its value to event value.
 const handleInputChange = (e) => {
@@ -70,11 +71,6 @@ const handleInputChange = (e) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
 };
 
-//Navigation re-render
-if (redirect) {
-    handleLogin();
-    return <Navigate to="nowshowing" replace />;
-}
 
 return (
     <div className='container'>

@@ -1,44 +1,63 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'; // Import BrowserRouter and useLocation
+import React, { useState, useEffect} from 'react';
+import { BrowserRouter as Router, Routes, Route, Outlet, } from 'react-router-dom'; // Import BrowserRouter
 import Navbar from './components/Navbar';
-import Login from './components/Login';
-import UserDashboard from './components/Dashboard';
+import SignUp from './components/SignUp';
+import UserDashboard from './components/UserDashboard';
 import AdminDashboard from './components/AdminDashboard';
-import NowShowing from './components/NowShowing.js';
-import Profile from './components/Profile.js';
-import 'bootstrap/dist/css/bootstrap.css';
-
+import NowShowing from './components/NowShowing';
+import Profile from './components/Profile';
+import Movie from './components/Movie';
+import Book from './components/Book';
+import './stylesheets/User.css';
 
 const App = () => {
-  
+  const [logStatus, changeLogStatus] = useState(false); // log state
+  const newDate = new Date();
+
+  const [today, SetDate] = useState({
+    day: newDate.getDate(),
+    month: newDate.getMonth() + 1, // Months are 0-based
+    year: newDate.getFullYear(),
+    dayofweek: newDate.getDay(),
+  });
+
+  console.log(today);
 
   return (
-    <Router> {/* Make sure the entire app is wrapped by Router */}
-      <AppRoutes />
+    <Router> 
+      <Routes>
+        {/* WITHOUT Navbar */}
+        <Route path="/" element={<NoNavbarLayout />}>
+          <Route index element={<SignUp changeLogStatus={changeLogStatus} />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        </Route>
+
+        {/* WITH Navbar */}
+        <Route path="/" element={<NavbarLayout logStatus={logStatus} />}>
+          <Route path="/nowshowing" element={<NowShowing />} />
+          <Route index path="/:user/dashboard" element={<UserDashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/:movieID" element={<Movie />} />
+          <Route path="/book/:movieID" element={<Book />} />
+        </Route>
+      </Routes>
     </Router>
   );
 };
 
-const AppRoutes = () => {
-  const location = useLocation(); // current Location
-  // LIST of Router without Navbar
-  const noNavbarRoutes = ['/', '/admin/dashboard'];
-
-  const [logStatus, changeLogStatus] = useState(false); //log state
-  
-
+const NoNavbarLayout = () => {
   return (
     <>
-      {/* If not included in the list, TRUE */}
-      {!noNavbarRoutes.includes(location.pathname) && <Navbar  logStatus={logStatus}/>}
+      <Outlet/>
+    </>
+  );
+};
 
-      <Routes>
-        <Route path="/" element={<Login changeLogStatus={changeLogStatus}/>} />
-        <Route path="/nowshowing" element={<NowShowing />} />
-        <Route path="/user/dashboard" element={<UserDashboard />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
+const NavbarLayout = ({ logStatus }) => {
+  return (
+    <>
+      <Navbar logStatus={logStatus}/>
+      <Outlet/>
     </>
   );
 };

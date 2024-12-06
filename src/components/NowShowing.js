@@ -1,10 +1,12 @@
-import Navbar from "./Navbar";
+
+
 function Showing() {
 
     
     return (
         <div className="Showing">
-            <button>im showing</button>
+            <button >im showing</button>
+            <button >BOOK</button>
         </div>
     );
 }
